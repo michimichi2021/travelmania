@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+/*全体*/
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li{
+  list-style: none;
+}
