@@ -1,0 +1,27 @@
+<h1>ユーザー情報一覧画面</h1>
+<table>
+  <thead>
+    <th>番号</th>
+    <th>名前</th>
+    <th>email</th>
+    <th>ユーザー状態</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td>
+      <% if user.is_deleted == false %>
+        <p>有効</p>
+      <% else %>
+        <p>退会</p>
+      <% end %>
+      </td>
+      <td><%= link_to "ユーザー詳細画面",admin_user_path(user) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
