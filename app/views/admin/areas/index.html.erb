@@ -1,0 +1,21 @@
+<h1>地域一覧</h1>
+<%= form_with model:@area,url: admin_areas_path(@area),method: :post,local:true do |f| %>
+  <%= f.text_field :name, autofocus: true %>
+  <%= f.submit "地域名追加" %>
+<% end %>
+<table>
+  <thead>
+    <th>地域名</th>
+    <th></th>
+    <th></th>
+  </thead>
+  <tbody>
+   <% @areas.each do |area| %>
+   <tr>
+     <td><%= area.name %></td>
+     <td><%= link_to "編集する",edit_admin_area_path(area) %></td>
+     <td><%= link_to "削除する",admin_area_path(area),method: :delete,data: { confirm: '本当に消しますか？' },class: 'btn btn-danger' %></td>
+   </tr>
+   <% end %>
+  </tbody>
+</table>

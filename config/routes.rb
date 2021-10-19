@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
-    resources :genres,only: [:index, :create, :edit, :update]
+    resources :areas, only: [:index, :create, :edit, :update, :destroy]
+    resources :genres,only: [:index, :create, :edit, :update, :destroy]
+    resources :scenes,only: [:index, :create, :edit, :update, :destroy]
   end
   
   scope module: :public do

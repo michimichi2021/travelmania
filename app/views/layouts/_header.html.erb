@@ -8,6 +8,18 @@
     <li>
       <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
     </li>
+    <li>
+      <%= link_to "地域一覧", admin_areas_path %>
+    </li>
+    <li>
+      <%= link_to "ジャンル一覧", admin_genres_path %>
+    </li>
+    <li>
+      <%= link_to "利用シーン一覧", admin_scenes_path %>
+    </li>
+    <li>
+      <%= link_to "会員一覧", admin_users_path %>
+    </li>
   <% else %>
     <li>
       <%= link_to "新規登録",  new_user_registration_path %>
