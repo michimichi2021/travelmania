@@ -27,7 +27,7 @@ Rails.application.routes.draw do
       end
       collection do
         get :unsubscribe
-        get :withdraw
+        patch :withdraw
       end
     end
     
