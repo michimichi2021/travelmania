@@ -1,0 +1,5 @@
+<h1>地域名編集画面</h1>
+<%= form_with model:@area,url: admin_area_path(@area),method: :patch,local:true do |f| %>
+  <div><%= f.text_field :name, autofocus: true %></div>
+  <%= f.submit "地域名を変更する" %>
+<% end %>

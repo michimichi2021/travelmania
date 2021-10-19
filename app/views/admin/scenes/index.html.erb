@@ -1,0 +1,21 @@
+<h1>利用シーン一覧</h1>
+<%= form_with model:@scene,url: admin_scenes_path(@scene),method: :post,local:true do |f| %>
+  <%= f.text_field :name, autofocus: true %>
+  <%= f.submit "利用シーン名追加" %>
+<% end %>
+<table>
+  <thead>
+    <th>利用シーン名</th>
+    <th></th>
+    <th></th>
+  </thead>
+  <tbody>
+   <% @scenes.each do |scene| %>
+    <tr>
+     <td><%= scene.name %></td>
+     <td><%= link_to "編集する",edit_admin_scene_path(scene) %></td>
+     <td><%= link_to "削除する",admin_scene_path(scene),method: :delete,data: { confirm: '本当に消しますか？' },class: 'btn btn-danger' %></td>
+    </tr>
+   <% end %>
+  </tbody>
+</table>
