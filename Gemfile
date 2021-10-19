@@ -67,3 +67,5 @@ group :production do
 end
 
 gem 'devise'
+gem 'activestorage-validator'
+gem 'image_processing', '~> 1.2'
