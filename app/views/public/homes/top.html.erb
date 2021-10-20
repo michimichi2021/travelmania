@@ -1,1 +1,17 @@
-<p>こんばんわ</p>
+<%= search_form_for @p, url: search_posts_path do |f| %>
+  <div class='nav-down'>
+    <div class='label-select'>
+      <%= f.label :genre_id_eq, 'ジャンル', class: 'label' %>
+      <%= f.collection_select :genre_id_eq, Genre.where.not(id: 0), :id, :name,  include_blank: '指定なし', class: 'search-select' %>
+    </div>
+    <div class='label-select'>
+      <%= f.label :area_id_eq, '地域', class: 'label' %>
+      <%= f.collection_select :area_id_eq, Area.where.not(id: 0), :id, :name,  include_blank: '指定なし', class: 'search-select' %>
+    </div>
+    <div class='label-select'>
+      <%= f.label :scene_id_eq, '利用シーン', class: 'label' %>
+      <%= f.collection_select :scene_id_eq, Scene.where.not(id: 0), :id, :name,  include_blank: '指定なし', class: 'search-select' %>
+    </div>
+    <%= f.submit '検索' %>
+  </div>
+<% end %>

@@ -1,0 +1,8 @@
+<% if @post.image.attached? %>
+    <%= image_tag @post.image.variant(resize:'300x300') %> <br>
+<% end %>
+<%= @post.name %>
+<%= @post.area.name %>
+<%= @post.genre.name %>
+<%= @post.scene.name %>
+<%= @post.introduction %>
