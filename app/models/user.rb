@@ -4,9 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
+  has_many :posts
   has_one_attached :image
-  validates :image, presence: true, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'] }
-
  
   validates :name, presence: true
   validates :email,format: { with: /\A\S+@\S+\.\S+\z/ }

@@ -1,0 +1,32 @@
+<% if @results.present? %>
+  <ul class='item-lists'>
+    <% @results.each do |post| %>
+      <% if post.image.attached? %>
+      <%= image_tag post.image.variant(resize:'300x300') %> <br>
+      <% end %>
+      <%= post.name %>
+      <%= post.area.name %>
+      <%= post.genre.name %>
+      <%= post.scene.name %>
+      <%= post.introduction %>
+    <% end %>
+  </ul>
+<% else %>
+  <div>
+    <p>一致する商品がありません。条件を変えて検索してみよう！</p>
+  </div>
+  <ul class='item-lists'>
+    <% @posts.each do |post| %>
+      <li>
+      <% if post.image.attached? %>
+      <%= image_tag post.image.variant(resize:'300x300') %> 
+      <% end %>
+      </li>
+      <li><%= post.name %></li>
+      <li><%= post.area.name %></li>
+      <li><%= post.genre.name %></li>
+      <li><%= post.scene.name %></li>
+      <li><%= post.introduction %></li>
+    <% end %>
+  </ul>
+<% end %>
