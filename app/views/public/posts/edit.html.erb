@@ -1,0 +1,18 @@
+<h1>投稿編集画面</h1>
+<%= form_with model:@post,method: :patch,local: true do |f| %>
+
+  <%= f.label:name, "投稿名" %>
+  <%= f.text_field:name,autofocus:true %>
+  <%= f.label:areas, "地域" %>
+  <%= f.collection_select :area_id, Area.all, :id, :name,  include_blank: '指定なし' %>
+  <%= f.label:genres, "ジャンル" %>
+  <%= f.collection_select :genre_id, Genre.all, :id, :name,  include_blank: '指定なし' %>
+  <%= f.label:scenes, "利用シーン" %>
+  <%= f.collection_select :scene_id, Scene.all, :id, :name,  include_blank: '指定なし' %>
+  <%= f.label:areas, "投稿説明文" %>
+  <%= f.text_field:introduction,autofocus:true %><br/>
+　<%= f.file_field :image %>
+  
+
+  <%= f.submit "投稿を編集する" %>
+<% end %>

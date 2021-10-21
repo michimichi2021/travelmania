@@ -1,25 +1,30 @@
 <% if @results.present? %>
   <ul class='item-lists'>
     <% @results.each do |post| %>
-      <% if post.image.attached? %>
-      <%= image_tag post.image.variant(resize:'300x300') %> <br>
+      <%= link_to post_path(post) do %>
+        <% if post.image.attached? %>
+        <%= image_tag post.image.variant(resize:'300x300') %> <br>
+        <% end %>
       <% end %>
       <%= post.name %>
       <%= post.area.name %>
       <%= post.genre.name %>
       <%= post.scene.name %>
       <%= post.introduction %>
+      <%= link_to user_path(post.user) do %>
+        <%= image_tag post.user.image.variant(resize:'100x100') %> 
+      <% end %>
     <% end %>
   </ul>
 <% else %>
-  <div>
+  <ul>
     <p>一致する商品がありません。条件を変えて検索してみよう！</p>
-  </div>
-  <ul class='item-lists'>
     <% @posts.each do |post| %>
       <li>
-      <% if post.image.attached? %>
-      <%= image_tag post.image.variant(resize:'300x300') %> 
+      <%= link_to post_path(post) do %>  
+        <% if post.image.attached? %>
+        <%= image_tag post.image.variant(resize:'300x300') %> 
+        <% end %>
       <% end %>
       </li>
       <li><%= post.name %></li>
@@ -27,6 +32,9 @@
       <li><%= post.genre.name %></li>
       <li><%= post.scene.name %></li>
       <li><%= post.introduction %></li>
+      <li><%= link_to user_path(post.user) do %>
+            <%= image_tag post.user.image.variant(resize:'100x100') %> 
+          <% end %></li>
     <% end %>
   </ul>
 <% end %>

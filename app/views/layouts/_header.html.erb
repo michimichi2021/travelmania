@@ -2,10 +2,16 @@
   <ul>  
   <% if user_signed_in? %>
     <li>
+      <%= link_to "行きたい場所をマッチングする",root_path %>
+    </li>
+    <li>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
     </li>
     <li>
       <%= link_to "マイページ", user_path(id: current_user) %>
+    </li>
+    <li>
+      <%= link_to "メッセージ", chats_path %>
     </li>
   <% elsif admin_signed_in? %>
     <li>
