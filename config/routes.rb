@@ -29,6 +29,7 @@ Rails.application.routes.draw do
         get :unsubscribe
         patch :withdraw
       end
+      resource :relationships, only: [:create, :destroy]
     end
     
     resources :posts, only: [:new, :create, :show, :edit, :update] do
@@ -44,7 +45,8 @@ Rails.application.routes.draw do
       end
     end
     
-    resources :chats, only:[:show,:create]
+    resources :chats, only:[:show,:create, :index]
+    
   end
  
 end

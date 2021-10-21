@@ -1,0 +1,16 @@
+<table>
+  <thead>
+    <th>相手</th>
+    <th></th>
+  </thead>
+  <tbody>
+  <% @user_rooms.each do |user_room| %> 
+    <% if user_room.user != current_user %>
+    <tr>
+      <td><%= user_room.user.name %></td>
+      <td><%= link_to "chatへ",chat_path(user_room.user) %></td>
+    </tr>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>
