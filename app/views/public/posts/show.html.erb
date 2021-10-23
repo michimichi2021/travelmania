@@ -10,6 +10,18 @@
 <%= @post.scene.name %>
 <%= @post.introduction %>
 
+<% if @post.favorited_by?(current_user) %>
+  <%= link_to post_favorites_path(@post),method: :delete do %>
+    <i class="fas fa-heart my-red"></i>
+  <% end %>
+  <%= @post.favorites.count %>
+<% else %>
+  <%= link_to post_favorites_path(@post),method: :post do %>
+    <i class="far fa-heart"></i>
+  <% end %>
+  <%= @post.favorites.count %>
+<% end %> 
+
 <div>
   <% if @user == current_user %>
   <%= link_to "投稿編集画面へ",edit_post_path(@post) %>

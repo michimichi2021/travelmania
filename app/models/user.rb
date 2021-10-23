@@ -15,6 +15,8 @@ class User < ApplicationRecord
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
   
+  has_many :favorites, dependent: :destroy
+  
   validates :name, presence: true
   validates :email,format: { with: /\A\S+@\S+\.\S+\z/ }
   validates :image, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'] }
