@@ -11,9 +11,21 @@
       <%= post.genre.name %>
       <%= post.scene.name %>
       <%= post.introduction %>
+      <% if post.favorited_by?(current_user) %>
+        <%= link_to post_favorites_path(post),method: :delete do %>
+          <i class="fas fa-heart my-red"></i>
+        <% end %>
+        <%= post.favorites.count %>
+      <% else %>
+        <%= link_to post_favorites_path(post),method: :post do %>
+          <i class="far fa-heart"></i>
+        <% end %>
+        <%= post.favorites.count %>
+      <% end %> 
       <%= link_to user_path(post.user) do %>
         <%= image_tag post.user.image.variant(resize:'100x100') %> 
       <% end %>
+     
     <% end %>
   </ul>
 <% else %>
@@ -32,6 +44,17 @@
       <li><%= post.genre.name %></li>
       <li><%= post.scene.name %></li>
       <li><%= post.introduction %></li>
+      <li><% if post.favorited_by?(current_user) %>
+            <%= link_to post_favorites_path(post),method: :delete do %>
+              <i class="fas fa-heart my-red"></i>
+            <% end %>
+            <%= post.favorites.count %>
+          <% else %>
+            <%= link_to post_favorites_path(post),method: :post do %>
+              <i class="far fa-heart"></i>
+            <% end %>
+            <%= post.favorites.count %>
+          <% end %> </li>
       <li><%= link_to user_path(post.user) do %>
             <%= image_tag post.user.image.variant(resize:'100x100') %> 
           <% end %></li>
