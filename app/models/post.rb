@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   belongs_to :scene, class_name: 'Scene', foreign_key: 'scene_id'
   has_one_attached :image
   has_many :favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
   
   validates :name, presence: true
   validates :introduction, presence: true
