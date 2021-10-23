@@ -27,3 +27,26 @@
   <%= link_to "投稿編集画面へ",edit_post_path(@post) %>
   <% end %>
 </div>
+
+<div>
+<p>コメント件数：<%= @post.comments.count %></p>
+<% @post.comments.each do |comment| %>
+  <p><%= link_to user_path(comment.user) do %>
+     <%= image_tag comment.user.image.variant(resize:'300x300') %> 
+     <% end %></p>
+  <%= comment.user.name %>
+  <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+  <% if comment.user == current_user %>
+  <div>
+    <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
+  </div>
+  <% end %>
+<% end %>
+</div>
+
+<div>
+<%= form_with(model:[@post, @comment], local: true) do |f| %>
+  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+  <%= f.submit "送信する" %>
+<% end %>
+</div>
