@@ -34,7 +34,7 @@
       <li><%= post.genre.name %></li>
       <li><%= post.scene.name %></li>
       <li><%= post.introduction %></li>
-      <div id="post_search_<%= post.id %>"><%= render "publc/favorites/favorite", post: post %></div> 
+      <div id="post_search_<%= post.id %>"><%= render "public/favorites/favorite", post: post %></div> 
       <li><%= link_to user_path(post.user) do %>
             <%= image_tag post.user.image.variant(resize:'100x100') %> 
           <% end %></li>

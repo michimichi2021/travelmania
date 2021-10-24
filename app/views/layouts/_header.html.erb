@@ -13,6 +13,12 @@
     <li>
       <%= link_to "メッセージ", chats_path %>
     </li>
+    <% if current_user.passive_notifications.where(checked: false).any? %>
+      <i class="fa fa-circle" style="color: gold;"></i>
+    <% end %>
+    <li>
+      <%= link_to "NOTICE", notifications_path, class: "btn-default" %>
+    </li>
   <% elsif admin_signed_in? %>
     <li>
       <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
