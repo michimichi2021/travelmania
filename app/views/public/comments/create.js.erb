@@ -1,5 +1,4 @@
 $("#comment_count").html("<%= j(render 'public/comments/count', post: @post) %>")
-$("#comments_area").html("<%= j(render 'public/comments/index', comment: comment) %>")
+$("#comments_area").html("<%= j(render 'public/comments/index', comment: comment,comments: @comments) %>")
 $("#comment_form").html("<%= j(render 'public/comments/form', comment: @comment,post: @post) %>")
 $("textarea").val('')
-  

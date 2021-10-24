@@ -1,23 +1,2 @@
 <h1>フォロワー一覧</h1>
-<% if @users.exists? %>
-<table>
-  <thead>
-    <th>ユーザー画像</th>
-    <th>ユーザー名</th>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-    <tr>
-      <td><%= link_to user_path(user) do %>
-            <% if user.image.attached? %>
-            <%= image_tag user.image.variant(resize:'100x100') %> 
-            <% end %>
-          <% end %></td> 
-      <td><%= user.name %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>
+<%= render 'public/users/follow',users:@users %>

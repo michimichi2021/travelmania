@@ -20,7 +20,7 @@
 
 <div>
 <div id="comment_count"><%= render partial: 'public/comments/count', locals: { post: @post } %></div>
-<% @post.comments.each do |comment| %>
+<% @comments.each do |comment| %>
   <div id="comments_area">
     <%= render partial: 'public/comments/index', locals: { comment: comment } %>
   </div>
