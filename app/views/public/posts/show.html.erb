@@ -1,5 +1,5 @@
 <%= link_to user_path(@user) do %>
-   <%= image_tag @user.image.variant(resize:'300x300') %> 
+   <%= image_tag @user.image.variant(resize:'300x300') %>
 <% end %>
 <% if @post.image.attached? %>
     <%= image_tag @post.image.variant(resize:'300x300') %> <br>
@@ -18,16 +18,15 @@
   <% end %>
 </div>
 
-<div>
-<div id="comment_count"><%= render partial: 'public/comments/count', locals: { post: @post } %></div>
-<% @comments.each do |comment| %>
-  <div id="comments_area">
-    <%= render partial: 'public/comments/index', locals: { comment: comment } %>
-  </div>
-<% end %>
+
+<div id="comment_count<%= @post.id %>"><%= render partial: 'public/comments/count', locals: { post: @post } %></div>
+
+ 
 <div id="comment_form">
   <%= render partial: 'public/comments/form', locals: { comment: @comment, post: @post } %>
 </div>
-</div>
 
-  
+
+
+
+<div id="comment_area"><%= render partial: 'public/comments/index', locals: { comments: @comments } %></div>
