@@ -46,7 +46,7 @@ Rails.application.routes.draw do
       end
     end
     
-    resources :chats, only:[:show,:create, :index]
+    resources :chats, only:[:show,:create, :index,:destroy]
     
   end
  
