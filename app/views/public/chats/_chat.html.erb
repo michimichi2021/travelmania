@@ -1,0 +1,27 @@
+ <% if chat.user_id == current_user.id %>
+    <tbody>
+      <tr>
+        <th><%= link_to user_path(chat.user) do %>
+            <%= image_tag chat.user.image.variant(resize:'300x300') %> 
+            <% end %></th>
+        <th>
+          <p style="text-align: left;"><%= chat.created_at.strftime('%Y/%m/%d') %><%= chat.message %></p>
+          <div>
+            <%= link_to "削除", chat_path(chat), method: :delete, remote:true %>
+          </div>
+        </th>
+      </tr>
+    <% else %>
+      <tr>
+        <th>
+          <p style="text-align: right;"><%= chat.created_at.strftime('%Y/%m/%d') %><%= chat.message %></p>
+        </th>
+        <th><%= link_to user_path(chat.user) do %>
+            <%= image_tag chat.user.image.variant(resize:'300x300') %> 
+            <% end %></th>
+      </tr>
+    </tbody>
+    <% end %>
+    
+    
+  

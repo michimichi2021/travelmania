@@ -10,17 +10,7 @@
 <%= @post.scene.name %>
 <%= @post.introduction %>
 
-<% if @post.favorited_by?(current_user) %>
-  <%= link_to post_favorites_path(@post),method: :delete do %>
-    <i class="fas fa-heart my-red"></i>
-  <% end %>
-  <%= @post.favorites.count %>
-<% else %>
-  <%= link_to post_favorites_path(@post),method: :post do %>
-    <i class="far fa-heart"></i>
-  <% end %>
-  <%= @post.favorites.count %>
-<% end %> 
+ <div id="post_<%= @post.id %>"><%= render "public/favorites/favorite", post: @post %></div>
 
 <div>
   <% if @user == current_user %>
@@ -29,24 +19,15 @@
 </div>
 
 <div>
-<p>コメント件数：<%= @post.comments.count %></p>
+<div id="comment_count"><%= render partial: 'public/comments/count', locals: { post: @post } %></div>
 <% @post.comments.each do |comment| %>
-  <p><%= link_to user_path(comment.user) do %>
-     <%= image_tag comment.user.image.variant(resize:'300x300') %> 
-     <% end %></p>
-  <%= comment.user.name %>
-  <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-  <% if comment.user == current_user %>
-  <div>
-    <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
+  <div id="comments_area">
+    <%= render partial: 'public/comments/index', locals: { comment: comment } %>
   </div>
-  <% end %>
 <% end %>
+<div id="comment_form">
+  <%= render partial: 'public/comments/form', locals: { comment: @comment, post: @post } %>
+</div>
 </div>
 
-<div>
-<%= form_with(model:[@post, @comment], local: true) do |f| %>
-  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-  <%= f.submit "送信する" %>
-<% end %>
-</div>
+  

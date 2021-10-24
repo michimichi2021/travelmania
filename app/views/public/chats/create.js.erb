@@ -1,0 +1,3 @@
+$("#chats_area").html("<%= j(render 'public/chats/chat', chat: chat) %>")
+$("#chat_form").html("<%= j(render 'public/chats/form', chat: @chat) %>")
+$("textarea").val('')

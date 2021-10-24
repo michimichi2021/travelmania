@@ -14,7 +14,7 @@ class Public::ChatsController < ApplicationController
       UserRoom.create(user_id: current_user.id, room_id: @room.id)
       UserRoom.create(user_id: @user.id, room_id: @room.id)
     end
-    @chats = @room.chats
+    @chats = @room.chats.order('id DESC')
     @chat = Chat.new(room_id: @room.id,user_id: current_user.id)
    
   end
@@ -28,6 +28,12 @@ class Public::ChatsController < ApplicationController
     @chat.save!
     redirect_to request.referer
   end
+  
+  def destroy
+    Chat.find_by(id: params[:id]).destroy
+    redirect_to request.referer
+  end
+  
 
   private
   
