@@ -18,16 +18,69 @@
  @import 'font-awesome';
 
 /*全体*/
+@charset "UTF-8";
 
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Corben', cursive;
 }
 
 li{
   list-style: none;
 }
 
+
+
+a,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+  text-decoration: none;
+}
+
+// ヘッダー
+nav{
+ display: flex;
+ width: 100%;
+ height: 70px;
+ background: #F6F6F6;
+}
+
+.site_logo{
+  color:black;
+}
+
+.drawer{
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ padding: 0 1em;
+}
+
+.menu ul li a:hover{
+  color:orange;
+}
+
+.menu{
+width: 100%;
+}
+
+.menu ul{
+ height: 70px;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: flex-end;
+ align-items: center;
+}
+.menu ul li {
+ padding: 0 1em;
+}
+
+
 //いいねのハート
 .my-red{color: #ce5242}
+
+
