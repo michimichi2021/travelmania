@@ -1,0 +1,8 @@
+  <div class ="post_wrap">
+    <%= link_to post_path(post) do %>
+    <% if post.image.attached? %>
+    <%= image_tag post.image.variant(resize:'200x200'),class: 'post_image' %> <br>
+    <% end %>
+    <% end %>
+    <div id="post_search_<%= post.id %>"><%= render "public/favorites/favorite", post: post %></div> 
+  </div>

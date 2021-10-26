@@ -1,8 +1,8 @@
 <%= link_to user_path(@user) do %>
-   <%= image_tag @user.image.variant(resize:'300x300') %>
+   <%= image_tag @user.image.variant(resize:'200x200') %>
 <% end %>
 <% if @post.image.attached? %>
-    <%= image_tag @post.image.variant(resize:'300x300') %> <br>
+    <%= image_tag @post.image.variant(resize:'200x200') %> <br>
 <% end %>
 <%= @post.name %>
 <%= @post.area.name %>

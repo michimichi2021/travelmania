@@ -1,57 +1,60 @@
-<header class ='mb-2'>
+<header>
+  
   <nav>
     <div class="drawer">
-      <h2><%= link_to "TravelMania",root_path,class: 'site_logo' %></h2>
+      <h4><%= link_to "TravelMania",root_path,class: 'site_logo' %></h4>
     </div>
   <div class="menu">
   <ul> 
   <% if user_signed_in? %>
     <li>
-      <%= link_to "行きたい場所をマッチングする",root_path %>
+      <%= link_to "search_locaton",root_path %>
     </li>
     <li>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      <%= link_to "logout", destroy_user_session_path, method: :delete %>
     </li>
     <li>
-      <%= link_to "マイページ", user_path(id: current_user) %>
+      <%= link_to "mypage", user_path(id: current_user) %>
     </li>
     <li>
-      <%= link_to "メッセージ", chats_path %>
+      <%= link_to "message", chats_path %>
     </li>
     <% if current_user.passive_notifications.where(checked: false).any? %>
       <i class="fa fa-circle" style="color: gold;"></i>
     <% end %>
     <li>
-      <%= link_to "NOTICE", notifications_path, class: "btn-default" %>
+      <%= link_to "notice", notifications_path, class: "btn-default" %>
     </li>
   <% elsif admin_signed_in? %>
     <li>
-      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+      <%= link_to "logout", destroy_admin_session_path, method: :delete %>
     </li>
     <li>
-      <%= link_to "地域一覧", admin_areas_path %>
+      <%= link_to "area", admin_areas_path %>
     </li>
     <li>
-      <%= link_to "ジャンル一覧", admin_genres_path %>
+      <%= link_to "genre", admin_genres_path %>
     </li>
     <li>
-      <%= link_to "利用シーン一覧", admin_scenes_path %>
+      <%= link_to "scene", admin_scenes_path %>
     </li>
     <li>
-      <%= link_to "会員一覧", admin_users_path %>
+      <%= link_to "customer", admin_users_path %>
     </li>
   <% else %>
     <li>
-      <%= link_to "行きたい場所をマッチングする",root_path %>
+      <%= link_to "search_location",root_path %>
     </li>
     <li>
-      <%= link_to "新規登録",  new_user_registration_path %>
+      <%= link_to "signup",  new_user_registration_path %>
     </li>
     <li>
-      <%= link_to "ログイン", new_user_session_path %>
+      <%= link_to "login", new_user_session_path %>
     </li>
   <% end %>
+  
   </ul>
   </div>
   </nav>
+  
 </header>
