@@ -1,48 +1,58 @@
-<h1>マイページ</h1>
-<% if @user.image.attached? %>
-<%= image_tag @user.image.variant(resize:'300x300') %>
-<% end %>
-<div><%= @user.name %></div>
-<div><%= @user.introduction %></div>
-
-<div>
-  <% if @user.id == current_user.id %> 
-  <%= link_to "ユーザー編集画面へ",edit_user_path(@user) %>
-  <% end %>
-</div>
-
-<%= link_to new_post_path do %>
-<i class="fas fa-camera-retro"></i>
-<% end %>
-
-<% if current_user != @user %>
-　<% if current_user.following?(@user) %>
- 　<%= link_to 'フォロー外す', user_relationships_path(@user.id), method: :delete, class: "btn btn-default" %>
-   　<% if @user.following?(current_user) %>
-   　  <%= link_to 'Begin Chat', chat_path(@user.id) %>
-   　<% end %>
-  <% else %>
- 　<%= link_to 'フォローする', user_relationships_path(@user.id), method: :post , class: "btn btn-primary"%>
-  <% end %>
-<% end %>
-
-<div>
-  <p>フォロワー:<%= link_to @user.follower_user.count,followers_user_path(@user) %></p>
-  <p>フォロー:<%= link_to @user.following_user.count,follows_user_path(@user) %></p>
-</div>
- 
-
- 
-
-<div>
-  <h1>投稿一覧</h1>
-  <% @posts.each do |post| %>
-    <li>
-    <%= link_to post_path(post) do %>
-      <% if post.image.attached? %>
-      <%= image_tag post.image.variant(resize:'300x300') %> 
+<div class="container mb-5">
+  <div class="row">
+    <div class ="col-12 text-center">
+      <% if @user.image.attached? %>
+        <%= image_tag @user.image.variant(resize:'200x200'),class:'user_icon mt-5' %>
+      <% else %>
+        <%= image_tag no_image.jpeg.variant(resize:'200x200'),class:'user_icon' %>
       <% end %>
-    <% end %>
-    </li>
-  <% end %>
+      <div class ="text-center">
+        <div class ="user_profile">
+          <span><%= @user.name %></span>
+          <p>article:<%= @user.posts.count %>&nbsp;&nbsp;
+          follower:<%= link_to @user.follower_user.count,followers_user_path(@user) %>&nbsp;&nbsp;
+          follow:<%= link_to @user.following_user.count,follows_user_path(@user) %></p>
+        </div>
+        <div class ="user_btn mb-2">
+          <% if @user.id == current_user.id %> 
+          <%= link_to "User Edit",edit_user_path(@user),class:"btn btn-sm btn-success" %>
+          <% end %>
+        </div>
+        <div class ='user_introduction m-auto'>
+          <%= @user.introduction %>
+        </div>
+      　<div class = "user_btn">
+        <% if current_user != @user %>
+          <% if current_user.following?(@user) %>
+          <%= link_to 'Unfollow', user_relationships_path(@user.id), method: :delete, class: "btn btn-danger mb-2" %>
+        　<% if @user.following?(current_user) %>
+          <%= link_to 'Chat', chat_path(@user.id),class:"btn btn-success mb-2" %>
+          <% end %>
+          <% else %>
+          <%= link_to 'Follow', user_relationships_path(@user.id), method: :post , class: "btn btn-primary"%>
+          <% end %>
+        <% end %>
+        </div>
+        <div class = "mt-5">
+          <h1>User posts</h1>
+          <div class ="d-flex flex-wrap justify-content-center">
+          <% @posts.each do |post| %>
+            <div class = "user_post_wrap">
+              <%= render "public/posts/post_image", post: post %>
+            </div>
+          <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+
+
+
+ 
+
+ 
+

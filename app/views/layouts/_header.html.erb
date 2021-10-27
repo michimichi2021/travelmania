@@ -8,6 +8,11 @@
   <ul> 
   <% if user_signed_in? %>
     <li>
+      <%= link_to new_post_path do %>
+        <i class="fas fa-camera-retro fa-2x"></i>
+      <% end %>
+    </li>
+    <li>
       <%= link_to "search_locaton",root_path %>
     </li>
     <li>
