@@ -1,0 +1,7 @@
+<%= link_to post_path(post) do %>
+  <% if post.image.attached? %>
+    <%= image_tag post.image.variant(resize:'200x200'),class: 'post_image' %> 
+  <% else %>
+    <%= image_tag no_image.jpeg.variant(resize:'200x200'),class: 'post_image' %>
+  <% end %>
+<% end %>
