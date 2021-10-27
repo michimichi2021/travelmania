@@ -1,11 +1,17 @@
-<div class ="post_area_wrap">
+<div class ="post_wrap">
+<div class ="post_image_wrap">
   <%= link_to post_path(post) do %>
     <% if post.image.attached? %>
       <%= image_tag post.image.variant(resize:'200x200'),class: 'post_image' %> <br>
     <% end %>
   <% end %>
-  第<%= i %>位
   <div id="post_search_<%= post.id %>"><%= render "public/favorites/favorite", post: post %></div> 
+  <%= post.name %><br>
+  <span class ='area_tag tag'><%= post.area.name %></span>
+  <span class ='genre_tag tag'><%= post.genre.name %></span>
+  <span class ='scene_tag tag'><%= post.scene.name %></span>
+</div>
+<div class = "rank_tag">Rank<%= i %></div>
 </div>
 
 
