@@ -42,9 +42,6 @@ a:active {
 }
 
 // ヘッダー
-
-
-
 nav{
  display: flex;
  width: 100%;
@@ -101,9 +98,52 @@ width: 100%;
 .post_image{
  background-size: contain;
  object-fit:cover;
- padding:10px;
 }
 
+.post_wrap{
+  width:200px;
+  height:330px;
+  background-color:#EEEEEE;
+  margin:10px;
+  position:relative;
+}
+
+.tag{
+    display: inline-block;
+    margin: 0 .1em .1em 0;
+    padding: .2em;
+    line-height: 1;
+    text-decoration: none;
+    border-radius: 2em;   
+}
+
+.area_tag{
+ background-color:#FFCCFF;    
+ border: 1px solid #FF77FF;
+}
+
+.genre_tag{
+ background-color:#CBFFD3;    
+ border: 1px solid #5BFF7F;
+}
+
+.scene_tag{
+ background-color:#DCC2FF;    
+ border: 1px solid #9057FF;
+}
+
+.rank_tag{
+display: inline-block;
+margin: 0 .1em .1em 0;
+padding: .2em;
+line-height: 1;
+text-decoration: none;
+color: #0000ee;
+background-color: #fff;
+border: 1px solid #0000ee;
+position:absolute;
+top:0px;
+}
 //いいねのハート
 .my-red{color: #ce5242}
 
