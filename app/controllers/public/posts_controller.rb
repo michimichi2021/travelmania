@@ -22,6 +22,7 @@ def show
   @user = @post.user
   @comment = Comment.new
   @comments = @post.comments
+  @favorite = Favorite.new
 end
 
 def edit
