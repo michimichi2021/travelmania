@@ -1,43 +1,27 @@
-<% if @results.present? %>
-  <ul class='item-lists'>
-    <% @results.each do |post| %>
-      <%= link_to post_path(post) do %>
-        <% if post.image.attached? %>
-        <%= image_tag post.image.variant(resize:'300x300') %> <br>
-        <% end %>
+<div class="container mt-5 mb-5">
+  <div class="row">
+    <div class ="col-12">
+    <% if @results.present? %>
+    <div class ="text-center">
+      <h1 class ="mb-5">Search Results</h1>
+      <div class ="d-flex flex-wrap justify-content-center">
+      <% @results.each do |post| %>
+        <div class = "user_post_wrap">
+          <%= render "public/posts/post_image", post: post %>
+        </div>
       <% end %>
-      <%= post.name %>
-      <%= post.area.name %>
-      <%= post.genre.name %>
-      <%= post.scene.name %>
-      <%= post.introduction %>
-      <div id="post_search_<%= post.id %>"><%= render "public/favorites/favorite", post: post %></div> 
-      <%= link_to user_path(post.user) do %>
-        <%= image_tag post.user.image.variant(resize:'100x100') %> 
-      <% end %>
-     
-    <% end %>
-  </ul>
-<% else %>
-  <ul>
-    <p>一致する商品がありません。条件を変えて検索してみよう！</p>
+      </div>
+    </div>
+    <% else %>
+    <h4 class ="text-center mt-5 mb-5">There is no matching article.<br>Let's search by changing the conditions!</h4>
+    <div class ="d-flex flex-wrap justify-content-center">
     <% @posts.each do |post| %>
-      <li>
-      <%= link_to post_path(post) do %>  
-        <% if post.image.attached? %>
-        <%= image_tag post.image.variant(resize:'300x300') %> 
-        <% end %>
-      <% end %>
-      </li>
-      <li><%= post.name %></li>
-      <li><%= post.area.name %></li>
-      <li><%= post.genre.name %></li>
-      <li><%= post.scene.name %></li>
-      <li><%= post.introduction %></li>
-      <div id="post_search_<%= post.id %>"><%= render "public/favorites/favorite", post: post %></div> 
-      <li><%= link_to user_path(post.user) do %>
-            <%= image_tag post.user.image.variant(resize:'100x100') %> 
-          <% end %></li>
+      <div class = "user_post_wrap text-center">
+        <%= render "public/posts/post_image", post: post %>
+      </div>
     <% end %>
-  </ul>
-<% end %>
+    </div>
+    <% end %>
+    </div>
+  </div>
+</div>
