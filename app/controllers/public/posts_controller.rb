@@ -1,16 +1,16 @@
 class Public::PostsController < ApplicationController
 before_action :search_product, only: [:search]
-  
-  
+
+
 def new
   @post = Post.new
 end
 
 def create
   @post = current_user.posts.new(post_params)
- 
+
   if @post.save(post_params)
-   
+
     redirect_to post_path(@post)
   else
     render 'new'
@@ -26,6 +26,11 @@ end
 
 def edit
   @post = Post.find(params[:id])
+  if @post.user == current_user
+    render :edit
+  else
+    redirect_to root_path
+  end
 end
 
 def update
@@ -45,7 +50,7 @@ end
 private
 
 def search_product
-  @p = Post.ransack(params[:q]) 
+  @p = Post.ransack(params[:q])
   @results = @p.result
 end
 
