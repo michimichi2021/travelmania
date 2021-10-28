@@ -1,14 +1,10 @@
 <div class="container mb-5">
   <div class="row">
     <div class ="col-12 text-center">
-      <% if @user.image.attached? %>
-        <%= image_tag @user.image.variant(resize:'200x200'),class:'user_icon mt-5' %>
-      <% else %>
-        <%= image_tag no_image.jpeg.variant(resize:'200x200'),class:'user_icon' %>
-      <% end %>
+      <%= render "public/users/user_image", user: @user %>
+      <div class ="text-center"><%= @user.name %></div>
       <div class ="text-center">
         <div class ="user_profile">
-          <span><%= @user.name %></span>
           <p>article:<%= @user.posts.count %>&nbsp;&nbsp;
           follower:<%= link_to @user.follower_user.count,followers_user_path(@user) %>&nbsp;&nbsp;
           follow:<%= link_to @user.following_user.count,follows_user_path(@user) %></p>
@@ -18,7 +14,7 @@
           <%= link_to "User Edit",edit_user_path(@user),class:"btn btn-sm btn-success" %>
           <% end %>
         </div>
-        <div class ='user_introduction m-auto'>
+        <div class ='introduction user_introduction m-auto'>
           <%= @user.introduction %>
         </div>
       　<div class = "user_btn">
