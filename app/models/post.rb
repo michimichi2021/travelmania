@@ -8,8 +8,8 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
   
-  validates :name, presence: true
-  validates :introduction, presence: true
+  validates :name, presence: true,length:{ maximum:50 }
+  validates :introduction, presence: true,length:{ maximum:1000 }
   validates :image, presence: true, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'] }
   
   def favorited_by?(user)
