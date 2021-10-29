@@ -1,11 +1,11 @@
-<div class ="container">
+<div class ="container mb-3">
   <div class ="row">
     <h1 class ="col-12 text-center mt-5 mb-2">Edit Article</h1>
   </div>
   <div class ="row">
     <div class ="col-12 text-center">
     <%= form_with model:@post,method: :patch,local: true do |f| %>
-      <%= f.label:name, "post name" %><br>
+      <%= f.label:name, "article name" %><br>
       <%= f.text_field:name,autofocus:true %><br>
       <%= f.label:areas, "area" %><br>
       <%= f.collection_select :area_id, Area.all, :id, :name,  include_blank: 'none' %><br>
@@ -13,7 +13,8 @@
       <%= f.collection_select :genre_id, Genre.all, :id, :name,  include_blank: 'none' %><br>
       <%= f.label:scenes, "scene" %><br>
       <%= f.collection_select :scene_id, Scene.all, :id, :name,  include_blank: 'none' %><br>
-      <label class="upload-label btn btn-success mt-3">
+      <%= f.label:image, "article image",class:"mt-3" %><br>
+      <label class="upload-label btn btn-success mb-2">
         Select File
         <input type="file">
       </label><br>
