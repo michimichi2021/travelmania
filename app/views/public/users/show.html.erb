@@ -11,7 +11,7 @@
         </div>
         <div class ="user_btn mb-2">
           <% if @user.id == current_user.id %> 
-          <%= link_to "User Edit",edit_user_path(@user),class:"btn btn-sm btn-success" %>
+          <%= link_to "Edit Profile",edit_user_path(@user),class:"btn btn-sm btn-success" %>
           <% end %>
         </div>
         <div class ='introduction user_introduction m-auto'>
@@ -30,7 +30,7 @@
         <% end %>
         </div>
         <div class = "mt-5">
-          <h1>User posts</h1>
+          <h1>User Articles</h1>
           <div class ="d-flex flex-wrap justify-content-center">
           <% @posts.each do |post| %>
             <div class = "user_post_wrap">

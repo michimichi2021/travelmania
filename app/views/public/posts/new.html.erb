@@ -1,18 +1,27 @@
-<h1>新規投稿画面</h1>
-<%= form_with model:@post,method: :post,local: true do |f| %>
+<div class ="container">
+  <div class ="row">
+    <h1 class ="col-12 text-center mt-5 mb-2">New Article</h1>
+  </div>
+  <div class ="row">
+    <div class ="col-12 text-center">
+    <%= form_with model:@post,method: :post,local: true do |f| %>
+      <%= f.label:name, "post name" %><br>
+      <%= f.text_field:name,autofocus:true %><br>
+      <%= f.label:areas, "area" %><br>
+      <%= f.collection_select :area_id, Area.all, :id, :name,  include_blank: 'none' %><br>
+      <%= f.label:genres, "genre" %><br>
+      <%= f.collection_select :genre_id, Genre.all, :id, :name,  include_blank: 'none' %><br>
+      <%= f.label:scenes, "scene" %><br>
+      <%= f.collection_select :scene_id, Scene.all, :id, :name,  include_blank: 'none' %><br>
+      <label class="upload-label btn btn-success mt-3">
+        Select File
+        <input type="file">
+      </label><br>
+      <%= f.label:introduction, "introduction" %><br>
+      <%= f.text_area:introduction,rows:'5',placeholder: "explain here...",autofocus:true %><br>
+      <%= f.submit "Register",class:"mt-2" %>
+    <% end %>  
+    </div>
+  </div>
+</div>
 
-  <%= f.label:name, "投稿名" %>
-  <%= f.text_field:name,autofocus:true %>
-  <%= f.label:areas, "地域" %>
-  <%= f.collection_select :area_id, Area.all, :id, :name,  include_blank: '指定なし' %>
-  <%= f.label:genres, "ジャンル" %>
-  <%= f.collection_select :genre_id, Genre.all, :id, :name,  include_blank: '指定なし' %>
-  <%= f.label:scenes, "利用シーン" %>
-  <%= f.collection_select :scene_id, Scene.all, :id, :name,  include_blank: '指定なし' %>
-  <%= f.label:areas, "投稿説明文" %>
-  <%= f.text_field:introduction,autofocus:true %><br/>
-　<%= f.file_field :image %>
-  
-
-  <%= f.submit "登録画面" %>
-<% end %>

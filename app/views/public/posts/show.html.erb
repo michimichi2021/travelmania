@@ -5,7 +5,7 @@
       <div class ="text-center"><%= @user.name %></div>
       <div class ="user_btn mb-2">
         <% if @user == current_user %>
-          <%= link_to "Post Edit",edit_post_path(@post),class:"btn btn-sm btn-success" %>
+          <%= link_to "Edit Article",edit_post_path(@post),class:"btn btn-sm btn-success" %>
         <% end %>
       </div>
     </div>
