@@ -1,19 +1,22 @@
-<div id="chat_form">
-  <%= render partial: 'public/chats/form', locals: { chat: @chat} %>
+<div class ="container">
+  <div class ="row">
+    <div class ="col-12 mt-2 mb-2 text-center">
+      <div id="chat_form">
+        <%= render partial: 'public/chats/form', locals: { chat: @chat} %>
+      </div>
+    </div>
+  </div>
+  <div class ="row">
+    <div class ="col-12">
+    <h4 class ="col-12 text-center mt-3 mb-3">CHAT WITH<br><%= @user.name %></h4>
+    <table class="message tableb m-auto">
+      <% @chats.each do |chat| %>
+        <div id="chats_area">
+          <%= render partial: 'public/chats/chat', locals: { chat: chat } %>
+        </div>
+      <% end %>
+    </table>
+    </div>
+  </div>
 </div>
 
-<h2>CHAT WITH <%= @user.name %></h2>
-
-<table class="message table">
-  <thead>
-    <tr>
-      <th style="text-align: left; font-size: 20px;"><%= current_user.name %></th>
-      <th style="text-align: right; font-size: 20px;"><%= @user.name %></th>
-    </tr>
-  </thead>
-  <% @chats.each do |chat| %>
-    <div id="chats_area">
-      <%= render partial: 'public/chats/chat', locals: { chat: chat } %>
-    </div>
-  <% end %>
-</table>
