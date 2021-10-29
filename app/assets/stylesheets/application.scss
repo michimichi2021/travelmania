@@ -45,6 +45,10 @@ a:active {
  word-wrap: break-word;
 }
 
+.upload-label input {
+ display: none;
+}
+
 //記事の画像
 .post_image{
  background-size: contain;
@@ -322,7 +326,8 @@ top:0px;
  word-wrap: break-word;
 }
 
-// 新規投稿画面
-.upload-label input {
- display: none;
+//
+
+.unsubscribe_btn{
+  color: white;   
 }

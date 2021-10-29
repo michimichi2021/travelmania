@@ -1,10 +1,23 @@
-<h1>ユーザー編集画面</h1>
-<%= form_with model:@user,url: user_path,method: :patch,local: :true do |f| %>
-  <%= f.file_field :image %>
-  <%= f.text_field :name, autofocus: true %>
-  <%= f.text_field :email, autofocus: true %>
-  <%= f.text_field :introduction, autofocus: true %>
-  <%= f.submit :ユーザー情報を変更する %>
-<% end %>
-
-<%= link_to "退会する",unsubscribe_users_path %>
+<div class ="container">
+  <div class ="row">
+    <h1 class ="col-12 text-center mt-5 mb-2">Edit Profile</h1>
+  </div>
+  <div class ="row">
+    <div class ="col-12 text-center">
+    <%= form_with model:@user,url: user_path,method: :patch,local: :true do |f| %>
+      <%= f.label:name, "user name" %><br>
+      <%= f.text_field :name, autofocus: true %><br>
+      <%= f.label:email, "email" %><br>
+      <%= f.text_field :email, autofocus: true %><br>
+      <%= f.label:image, "profile image",class:"mt-2" %><br>
+      <label class="upload-label btn btn-success mb-2">
+        Select File
+        <input type="file">
+      </label><br>
+      <%= f.text_area:introduction,rows:'5',placeholder: "explain here...",autofocus:true %><br>
+      <%= f.submit "Edit Profile",class:"mt-2" %>
+    <% end %>
+    <%= link_to "Withdraw",unsubscribe_users_path,class:"btn btn-danger mt-3" %>  
+    </div>
+  </div>
+</div>
