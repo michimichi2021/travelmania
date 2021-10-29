@@ -214,4 +214,111 @@ top:0px;
  height: 80px;
 }
 
-// 
+// チャットページ
+.talking {
+ margin-bottom:2em;
+ position:relative;
+}
+
+.talking:before , .talking:after {
+ clear:both;
+ content:"";
+ display:block;
+}
+
+/*アイコン*/
+.talking .user_icon {
+ width:60px;    
+ height:60px;    
+ margin: 0px 10px;
+ border:2px solid #aaa;
+ border-radius:50%; 
+}
+
+
+/*吹き出しのセリフ部分*/
+.talking-left , .talking-right  {
+ position:relative;
+ padding:10px;
+ border-style:solid;    
+ border-radius:10px;   
+ max-width: calc(100% - 80px);
+}
+
+.talking p {
+ margin:0;
+}
+
+.talking p :last-child {
+ margin:0;
+}
+
+/*---左の吹き出し---*/
+.talking-left {
+ float:left;
+ border-width:2px;        
+ border-color:lightpink;   
+ background:lightpink;    
+}
+
+/*左の吹き出し 三角*/
+.talking-left:before {
+ position: absolute;
+ content: '';
+ border: 10px solid transparent;
+ border-right: 10px solid lightpink;  
+ top: 15px;
+ left: -22px;
+}
+
+.talking-left:after {
+ position: absolute;
+ content: '';
+ border: 10px solid transparent;
+ border-right: 10px solid lightpink;
+ top: 15px;
+ left: -19px;
+}
+
+/*---右の吹き出し---*/
+.talking-right {
+ float:right;
+ border-width:2px;     
+ border-color:khaki;    
+ background:khaki;    
+}
+
+/*右の吹き出し 三角*/
+.talking-right:before {
+ position: absolute;
+ content: '';
+ border: 10px solid transparent;
+ border-left: 10px solid khaki;  
+ top: 15px;
+ right: -22px;
+}
+
+.talking-right:after {
+ position: absolute;
+ content: '';
+ border: 10px solid transparent;
+ border-left: 10px solid khaki;
+ top: 15px;
+ right: -19px;
+}
+
+.talking-left_icon figcaption ,
+.talking-right_icon figcaption {
+ padding:2px 0 0;
+ font-size:12px;
+ text-align:center;
+}
+
+.chat_wrap{
+ width:170px;
+ height: 80px;
+ overflow-y:scroll;
+ overflow-wrap: break-word;
+ word-wrap: break-word;
+}
+
