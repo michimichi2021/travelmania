@@ -1,17 +1,16 @@
 module NotificationsHelper
   def notification_form(notification)
-    visiter = notification.visiter
     visited = notification.visited
     case notification.action
     when "follow" then
-      tag.a(notification.visiter.name, href: user_path(visiter), style: "font-weight: bold;") + "があなたのことをフォローしました"
+      "The user has followed you."
     when "like" then
-      tag.a(notification.visiter.name, href: user_path(visiter), style: "font-weight: bold;") + "が" + tag.a('あなたの投稿', href: post_path(notification.post_id), style: "font-weight: bold;") + "にいいねしました"
+      tag.a("The user liked") + tag.a(' your article', href: post_path(notification.post_id), style: "color:orange;")
     when "comment" then
     if notification.post.user_id == visited.id
-      tag.a(visiter.name, href: user_path(visiter), style: "font-weight: bold;") + "が" + tag.a('あなたの投稿', href: post_path(notification.post_id), style: "font-weight: bold;") + "にコメントしました"
+      tag.a("The user has commented on") + tag.a(' your article', href: post_path(notification.post_id), style: "color:orange;") 
     else
-      tag.a(visiter.name, href: user_path(visiter), style: "font-weight: bold;") + "が" + tag.a('あなたの返信', href: post_path(notification.post_id), style: "font-weight: bold;") + "にコメントしました"
+      tag.a("The user has commented on") + tag.a(' your reply', href: post_path(notification.post_id), style: "color:orange;")  
     end
     end
   end

@@ -40,7 +40,7 @@ Rails.application.routes.draw do
       end
     end
     
-    resources :notifications, only:[:index, :destroy] do
+    resources :notifications, only:[:index] do
       collection do
         delete :destroy_all
       end

@@ -10,7 +10,6 @@ def create
   @post = current_user.posts.new(post_params)
 
   if @post.save(post_params)
-
     redirect_to post_path(@post)
   else
     render 'new'
