@@ -13,22 +13,30 @@
       <% end %>
     </li>
     <li>
-      <%= link_to "search_locaton",root_path %>
+      <%= link_to favorites_user_path(id: current_user) do %>
+        <i class="far fa-heart fa-2x"></i>
+      <% end %>
     </li>
     <li>
-      <%= link_to "logout", destroy_user_session_path, method: :delete %>
+      <%= link_to user_path(id: current_user) do %>
+      <i class="far fa-user fa-2x"></i>
+      <% end %>
     </li>
     <li>
-      <%= link_to "mypage", user_path(id: current_user) %>
-    </li>
-    <li>
-      <%= link_to "message", chats_path %>
+      <%= link_to chats_path do %>
+      <i class="far fa-envelope fa-2x"></i>
+      <% end %>
     </li>
     <% if current_user.passive_notifications.where(checked: false).any? %>
       <i class="fa fa-circle" style="color: gold;"></i>
     <% end %>
     <li>
-      <%= link_to "notice", notifications_path, class: "btn-default" %>
+      <%= link_to notifications_path do %>
+      <i class="far fa-bell fa-2x"></i>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to "logout", destroy_user_session_path, method: :delete %>
     </li>
   <% elsif admin_signed_in? %>
     <li>
