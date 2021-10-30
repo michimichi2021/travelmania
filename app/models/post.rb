@@ -46,6 +46,8 @@ class Post < ApplicationRecord
     notification.save if notification.valid?
   end
   
+  
+  
    scope :order_rank, -> { order('count(post_id) desc').limit(5) }
    scope :post_favorite, -> { joins(:favorites).group("favorites.post_id") }
 end
