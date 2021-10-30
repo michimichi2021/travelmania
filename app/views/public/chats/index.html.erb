@@ -1,16 +1,38 @@
-<table>
-  <thead>
-    <th>相手</th>
-    <th></th>
-  </thead>
-  <tbody>
-  <% @user_rooms.each do |user_room| %> 
-    <% if user_room.user != current_user %>
-    <tr>
-      <td><%= user_room.user.name %></td>
-      <td><%= link_to "chatへ",chat_path(user_room.user) %></td>
-    </tr>
+<div class ="container mb-2 mt-2"> 
+  <div class ="row">
+    <h1 class="col-12 text-center mt-5">Chat Room</h1>
+    <% if @user_rooms.exists? %>
+    <table class ="follow_table">
+      <tbody>
+        <tr>
+          <th>user icon</th> 
+          <th></th>
+      　</tr>
+        <% @user_rooms.each do |user_room| %> 
+          <% if user_room.user != current_user %>
+          <tr>
+            <td class="icon">
+              <div class ="user_follow_image">
+              <%= link_to user_path(user_room.user) do %>
+                <% if user_room.user.image.attached? %>
+                  <%= image_tag user_room.user.image.variant(resize:'80x80'),class:'user_icon' %>
+                <% else %>
+                  <%= image_tag no_image.jpeg.variant(resize:'80x80'),class:'user_icon' %>
+                <% end %>
+              <% end %>
+              <br><%= user_room.user.name %>
+              </div>
+            </td> 
+            <td>
+              <%= link_to "chat",chat_path(user_room.user),class:"btn btn-sm btn-success chat_btn",style:"color:white;" %><br>
+            </td>
+          </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+    <% else %>
+      <h3 class ="col-12 text-center mt-5">There are no chat rooms.</h3>
     <% end %>
-  <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
