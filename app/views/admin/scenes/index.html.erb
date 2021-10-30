@@ -1,21 +1,27 @@
-<h1>利用シーン一覧</h1>
-<%= form_with model:@scene,url: admin_scenes_path(@scene),method: :post,local:true do |f| %>
-  <%= f.text_field :name, autofocus: true %>
-  <%= f.submit "利用シーン名追加" %>
-<% end %>
-<table>
-  <thead>
-    <th>利用シーン名</th>
-    <th></th>
-    <th></th>
-  </thead>
-  <tbody>
-   <% @scenes.each do |scene| %>
-    <tr>
-     <td><%= scene.name %></td>
-     <td><%= link_to "編集する",edit_admin_scene_path(scene) %></td>
-     <td><%= link_to "削除する",admin_scene_path(scene),method: :delete,data: { confirm: '本当に消しますか？' },class: 'btn btn-danger' %></td>
-    </tr>
-   <% end %>
-  </tbody>
-</table>
+<div class ="container mb-5">
+  <div class ="row">
+    <h1 class ="col-12 text-center mt-5">Scene List</h1>
+    <div class ="col-12 text-center mt-2">
+    <%= form_with model:@scene,url: admin_scenes_path(@scene),method: :post,local:true do |f| %>
+      <%= f.text_field :name, autofocus: true %>
+      <%= f.submit "send" %>
+    <% end %>
+    <table class ="admin_table col-12 text-center mt-5">
+      <thead>
+        <th>scene name</th>
+        <th></th>
+        <th></th>
+      </thead>
+      <tbody>
+      <% @scenes.each do |scene| %>
+        <tr>
+         <td><%= scene.name %>
+         <td><%= link_to "Edit",edit_admin_scene_path(scene),class:"btn btn-sm btn-success" %></td>
+         <td><%= link_to "Destroy",admin_scene_path(scene),method: :delete,data: { confirm: 'Do you really want to delete this?' },class: 'btn btn-sm btn-danger' %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>  
+    </div>
+  </div>
+</div>
