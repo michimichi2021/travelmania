@@ -327,3 +327,33 @@ top:0px;
 }
 
 //
+.follow_table{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.follow_table tr{
+  border-bottom: solid 1px #eee;
+  cursor: pointer;
+}
+
+.follow_table tr:hover{
+  background-color: #d4f0fd;
+}
+
+.follow_table th,.follow_table td{
+  text-align: center;
+  width: 25%;
+  padding: 15px 0;
+}
+
+.follow_table td.icon{
+  background-size: 35px;
+  background-position: left 5px center;
+  background-repeat: no-repeat;
+}
+
+.user_profile a{
+  color:orange;
+}
