@@ -1,0 +1,10 @@
+<div class='container mb-5'>
+  <div class='row'>
+    <h2 class='col-12 text-center mt-5 mb-4'>Favorite List</h2>
+    <div class ='d-flex flex-wrap justify-content-center'>
+    <% @favorite_posts.each do |post| %>
+     <%= render "public/posts/new_index", post: post %>
+    <% end %>
+    </div>
+  </div>
+</div>  
