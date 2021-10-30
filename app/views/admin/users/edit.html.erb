@@ -1,10 +1,18 @@
-<h1>ユーザー情報編集画面</h1>
-<%= form_with model:@user,url: admin_user_path(@user),method: :patch,local:true do |f| %>
-  <div><%= f.text_field :name, autofocus: true %></div>
-  <div><%= f.text_field :email, autofocus: true %></div>
-  <%= f.label :有効 %>
-  <%= f.radio_button :is_deleted, false, class: 'btn btn-secondary' %>
-  <%= f.label :退会 %>
-  <%= f.radio_button :is_deleted, true, class: 'btn btn-secondary' %>
-  <%= f.submit :ユーザー情報を変更する %>
-<% end %>
+<div class ="container mb-5">
+  <div class ="row">
+    <h1 class ="col-12 text-center mt-5">Edit User</h1>
+    <div class ="col-12 text-center mt-1">
+    <%= form_with model:@user,url: admin_user_path(@user),method: :patch,local:true do |f| %>
+      <%= f.label:name, "user name" %><br>
+      <%= f.text_field :name, autofocus: true %><br>
+      <%= f.label:email, "email" %><br>
+      <%= f.text_field :email, autofocus: true %><br>
+      <%= f.label :有効 %>
+      <%= f.radio_button :is_deleted, false, class: 'btn btn-secondary' %>
+      <%= f.label :退会 %>
+      <%= f.radio_button :is_deleted, true, class: 'btn btn-secondary' %><br>
+      <%= f.submit :ユーザー情報を変更する %>
+    <% end %>
+    </div>
+  </div>
+</div>
