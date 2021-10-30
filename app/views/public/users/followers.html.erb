@@ -1,2 +1,6 @@
-<h1>フォロワー一覧</h1>
-<%= render 'public/users/follow',users:@users %>
+<div class ="container"> 
+  <div class ="row">
+    <h1 class="col-12 text-center mt-5">Follower</h1>
+    <%= render 'public/users/follow',users:@users,user:@user %> 
+  </div>
+</div>

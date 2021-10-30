@@ -23,7 +23,7 @@ class User < ApplicationRecord
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
   
-  validates :name, presence: true
+  validates :name, presence: true,length:{ maximum:22 }
   validates :email,format: { with: /\A\S+@\S+\.\S+\z/ }
   validates :image, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'] }
   
