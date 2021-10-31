@@ -1,6 +1,6 @@
 # TravelMania
 
-<img width="1440" alt="スクリーンショット 2021-11-01 3 13 29" src="https://user-images.githubusercontent.com/84381486/139596484-075d6f54-5914-487d-b35f-09afb7935bdb.png">
+<img width="1437" alt="スクリーンショット 2021-11-01 3 20 57" src="https://user-images.githubusercontent.com/84381486/139596699-34a52adc-d7d3-4f8f-ac6b-d3a4f97dc59d.png">
 
 
 ## サイト概要
