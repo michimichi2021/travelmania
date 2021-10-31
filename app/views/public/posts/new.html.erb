@@ -1,6 +1,14 @@
 <div class ="container mb-3">
   <div class ="row">
     <h1 class ="col-12 text-center mt-5 mb-2">New Article</h1>
+    <% if @post.errors.any? %>
+    <div class ="col-12 text-center">
+      <%= @post.errors.count %> errors have occurred<br>
+      <% @post.errors.full_messages.each do |message| %>
+        <%= message %><br>
+      <% end %>
+    </div>
+    <% end %>
   </div>
   <div class ="row">
     <div class ="col-12 text-center">

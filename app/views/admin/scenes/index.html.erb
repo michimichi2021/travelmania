@@ -1,6 +1,14 @@
 <div class ="container mb-5">
   <div class ="row">
     <h1 class ="col-12 text-center mt-5">Scene List</h1>
+     <% if @scene.errors.any? %>
+    <div class ="col-12 text-center">
+      <%= @scene.errors.count %> errors have occurred<br>
+      <% @scene.errors.full_messages.each do |message| %>
+        <%= message %><br>
+      <% end %>
+    </div>
+    <% end %>
     <div class ="col-12 text-center mt-2">
     <%= form_with model:@scene,url: admin_scenes_path(@scene),method: :post,local:true do |f| %>
       <%= f.text_field :name, autofocus: true %>
