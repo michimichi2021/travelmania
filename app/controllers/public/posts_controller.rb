@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
 before_action :search_product, only: [:search]
-
+before_action :authenticate_user!,except:[:show, :search, :destroy]
 
 def new
   @post = Post.new
@@ -42,9 +42,16 @@ def update
   end
 end
 
+def destroy
+  @post = Post.find(params[:id])
+  @user = @post.user
+  @post.destroy
+  redirect_to user_path(@user)
+end
+
 def search
-  @results = @p.result
-  @posts = Post.all
+  @results = @p.result.page(params[:page]).per(10)
+  @posts = Post.page(params[:page]).per(20)
 end
 
 private

@@ -2,7 +2,7 @@ class Admin::ScenesController < ApplicationController
 before_action :authenticate_admin!  
   
 def index
-  @scenes = Scene.all
+  @scenes = Scene.page(params[:page]).per(10)
   @scene = Scene.new
 end
 
