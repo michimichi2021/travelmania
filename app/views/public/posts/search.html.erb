@@ -10,6 +10,7 @@
           <%= render "public/posts/post_image", post: post %>
         </div>
       <% end %>
+      <%= paginate @results %>
       </div>
     </div>
     <% else %>
@@ -20,6 +21,7 @@
         <%= render "public/posts/post_image", post: post %>
       </div>
     <% end %>
+    <%= paginate @posts %>
     </div>
     <% end %>
     </div>

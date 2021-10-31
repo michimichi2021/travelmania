@@ -8,18 +8,19 @@
     <% end %>
     <table class ="admin_table col-12 text-center mt-5",style="width:100%;">
       <thead>
-        <th>genre name</th>
+        <th class ="admin_th">genre name</th>
       </thead>
       <tbody>
       <% @genres.each do |genre| %>
         <tr>
-         <td><%= genre.name %><br>
+         <td class ="admin_td"><%= genre.name %><br>
          <%= link_to "Edit",edit_admin_genre_path(genre),class:"btn btn-sm btn-success" %>&nbsp;&nbsp;
          <%= link_to "Destroy",admin_genre_path(genre),method: :delete,data: { confirm: 'Do you really want to delete this?' },class: 'btn  btn-sm btn-danger' %>
         </tr>
       <% end %>
       </tbody>
     </table>  
+    <%= paginate @genres %>
     </div>
   </div>
 </div>

@@ -8,20 +8,21 @@
     <% end %>
     <table class ="admin_table col-12 text-center mt-5">
       <thead>
-        <th>area name</th>
-        <th></th>
-        <th></th>
+        <th class ="admin_th">area name</th>
+        <th class ="admin_th"></th>
+        <th class ="admin_th"></th>
       </thead>
       <tbody>
        <% @areas.each do |area| %>
        <tr>
-         <td><%= area.name %></td>
-         <td><%= link_to "Edit",edit_admin_area_path(area),class:"btn btn-sm btn-success" %></td>
-         <td><%= link_to "Destroy",admin_area_path(area),method: :delete,data: { confirm: 'Do you really want to delete this?' },class: 'btn btn-sm btn-danger' %></td>
+         <td class ="admin_td"><%= area.name %></td>
+         <td class ="admin_td"><%= link_to "Edit",edit_admin_area_path(area),class:"btn btn-sm btn-success" %></td>
+         <td class ="admin_td"><%= link_to "Destroy",admin_area_path(area),method: :delete,data: { confirm: 'Do you really want to delete this?' },class: 'btn btn-sm btn-danger' %></td>
        </tr>
        <% end %>
       </tbody>
     </table>  
+    <%= paginate @areas %>
     </div>
   </div>
 </div>

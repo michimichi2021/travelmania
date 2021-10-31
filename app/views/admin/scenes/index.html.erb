@@ -8,20 +8,21 @@
     <% end %>
     <table class ="admin_table col-12 text-center mt-5">
       <thead>
-        <th>scene name</th>
-        <th></th>
-        <th></th>
+        <th class ="admin_th">scene name</th>
+        <th class ="admin_th"></th>
+        <th class ="admin_th"></th>
       </thead>
       <tbody>
       <% @scenes.each do |scene| %>
         <tr>
-         <td><%= scene.name %>
-         <td><%= link_to "Edit",edit_admin_scene_path(scene),class:"btn btn-sm btn-success" %></td>
-         <td><%= link_to "Destroy",admin_scene_path(scene),method: :delete,data: { confirm: 'Do you really want to delete this?' },class: 'btn btn-sm btn-danger' %></td>
+         <td class ="admin_td"><%= scene.name %>
+         <td class ="admin_td"><%= link_to "Edit",edit_admin_scene_path(scene),class:"btn btn-sm btn-success" %></td>
+         <td class ="admin_td"><%= link_to "Destroy",admin_scene_path(scene),method: :delete,data: { confirm: 'Do you really want to delete this?' },class: 'btn btn-sm btn-danger' %></td>
         </tr>
       <% end %>
       </tbody>
     </table>  
+    <%= paginate @scenes %>
     </div>
   </div>
 </div>

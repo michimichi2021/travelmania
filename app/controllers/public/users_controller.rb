@@ -1,10 +1,9 @@
 class Public::UsersController < ApplicationController
-before_action :authenticate_user!
+before_action :authenticate_user!,except:[:show]
 
 def show
   @user = User.find(params[:id])
-  @posts = @user.posts
-
+  @posts = @user.posts.page(params[:page]).per(10)
 end
 
 def edit
@@ -33,12 +32,12 @@ end
 
 def follows
   @user = User.find(params[:id])
-  @users = @user.following_user.all
+  @users = @user.following_user.page(params[:page]).per(5)
 end
 
 def followers
   @user = User.find(params[:id])
-  @users = @user.follower_user.all
+  @users = @user.follower_user.page(params[:page]).per(5)
 end
 
 def unsubscribe

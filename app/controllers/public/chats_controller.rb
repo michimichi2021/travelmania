@@ -1,4 +1,5 @@
 class Public::ChatsController < ApplicationController
+  before_action :authenticate_user!
   before_action :follow_each_other, only: [:show]
   
   def show
@@ -14,13 +15,13 @@ class Public::ChatsController < ApplicationController
       UserRoom.create(user_id: current_user.id, room_id: @room.id)
       UserRoom.create(user_id: @user.id, room_id: @room.id)
     end
-    @chats = @room.chats.order('id DESC')
+    @chats = @room.chats.order('id DESC').page(params[:page]).per(10)
     @chat = Chat.new(room_id: @room.id,user_id: current_user.id)
    
   end
   
   def index
-    @user_rooms = UserRoom.all
+    @user_rooms = UserRoom.page(params[:page]).page(params[:page]).per(10)
   end
   
   def create

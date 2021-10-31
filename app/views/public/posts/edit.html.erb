@@ -19,6 +19,11 @@
       <%= f.text_area:introduction,rows:'5',placeholder: "explain here...",autofocus:true %><br>
       <%= f.submit "Edit",class:"mt-2" %>
     <% end %>  
+    <div class='mt-2'>
+    <% if current_user == @post.user%>
+      <%=link_to "Destroy",post_path(@post),method: :delete,data: { confirm: 'Do you really want to delete this?' },class: 'btn btn-danger mt-1' %>
+    <% end %>
+    </div>
     </div>
   </div>
 </div>
