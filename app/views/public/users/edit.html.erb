@@ -1,0 +1,28 @@
+<div class ="container">
+  <div class ="row">
+    <h1 class ="col-12 text-center mt-5 mb-2">Edit Profile</h1>
+    <% if @user.errors.any? %>
+    <div class ="col-12 text-center">
+      <%= @user.errors.count %> errors have occurred<br>
+      <% @user.errors.full_messages.each do |message| %>
+        <%= message %><br>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+  <div class ="row">
+    <div class ="col-12 text-center mt-2">
+    <%= form_with model:@user,url: user_path,method: :patch,local: :true do |f| %>
+      <%= f.label:name, "user name" %><br>
+      <%= f.text_field :name, autofocus: true %><br>
+      <%= f.label:email, "email" %><br>
+      <%= f.text_field :email, autofocus: true %><br>
+      <%= f.label:image, "profile image",class:"mt-2" %><br>
+      <%= f.file_field :image,class:"mb-2" %><br>
+      <%= f.text_area:introduction,rows:'5',placeholder: "explain here...",autofocus:true %><br>
+      <%= f.submit "Edit Profile",class:"mt-2" %>
+    <% end %>
+    <%= link_to "Withdraw",unsubscribe_users_path,class:"btn btn-danger mt-3" %>  
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<% comments.each do |comment| %>
+  <%= link_to user_path(comment.user) do %>
+    <% if comment.user.image.attached? %>
+      <%= image_tag comment.user.image.variant(resize:'50x50'),class:'post_show_user_icon mt-2' %>
+    <% else %>
+      <%= image_tag no_image.jpeg.variant(resize:'50x50'),class:'post_show_user_icon mt-2' %>
+    <% end %>
+  <% end %>
+  <%= comment.user.name %>&nbsp;&nbsp;
+  <%= comment.created_at.strftime('%Y/%m/%d') %>
+  <% if comment.user == current_user %>
+    <%= link_to post_comment_path(comment.post, comment), method: :delete, remote:true do %>
+      <i class="fas fa-trash-alt"></i>
+    <% end %>
+  <% end %><br>
+  <div class ="introduction comment_introduction"><%= comment.comment %></div><br>
+<% end %>

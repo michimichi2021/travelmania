@@ -1,0 +1,51 @@
+<div class ="container mb-2 mt-2">
+  <div class ="row">
+  <h2 class="col-12 text-center mt-5">Notification</h2>
+  <% if @notifications.exists? %>
+    <div class ="col-12 text-center mt-2">
+    <%= link_to destroy_all_notifications_path, method: :delete do %>
+      <i class="fas fa-trash" style="color: black;"></i>
+      <h7 style="color: black;">Delete all</h7>
+    <% end %>
+    </div>
+    <hr>
+    <table class ="follow_table">
+      <tbody>
+        <tr>
+          <th class="icon">user icon</th> 
+          <th>content</th>
+      　</tr>
+      　
+        <% @notifications.each do |notification| %>
+        <div class="users-index">
+          <% if notification.visiter != current_user %>
+          <% visiter = notification.visiter %>
+        
+          <tr>
+            <td class="icon">
+              <div class ="user_follow_image">
+              <%= link_to user_path(notification.visiter) do %>
+                <% if visiter.image.attached? %>
+                  <%= image_tag visiter.image.variant(resize:'80x80'),class:'user_icon' %>
+                <% else %>
+                  <%= image_tag no_image.jpeg.variant(resize:'80x80'),class:'user_icon' %>
+                <% end %>
+              <% end %>
+              <br><%= notification.visiter.name %>
+              </div>
+            </td> 
+            <td>
+              <%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)} ago)" %></span>
+            </td>
+          </tr>
+          <% end %>
+        </div>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @notifications %>
+  <% else %>
+    <p class ="col-12 text-center">There is no notification.</p>
+  <% end %>
+  </div>
+</div>

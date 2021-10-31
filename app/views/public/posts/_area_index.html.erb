@@ -1,0 +1,13 @@
+<div class ="post_wrap">
+<div class ="post_image_wrap">
+  <%= render "public/posts/post_image", post: post %>
+  <div id="post_search_<%= post.id %>"><%= render "public/favorites/favorite", post: post %></div> 
+  <%= post.name %><br>
+  <span class ='area_tag tag'><%= post.area.name %></span>
+  <span class ='genre_tag tag'><%= post.genre.name %></span>
+  <span class ='scene_tag tag'><%= post.scene.name %></span>
+</div>
+<div class = "rank_tag">Rank<%= i %></div>
+</div>
+
+

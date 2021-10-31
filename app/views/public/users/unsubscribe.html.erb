@@ -1,0 +1,11 @@
+<div class ="containe mt-5">
+  <div class ="row">
+    <h2 class ="col-12 text-center mt-5">Do you<br> want to<br> unsubscribe?</h2>
+  </div>
+  <div class ="row">
+    <div class = "col-12 text-center mt-3">
+    <%= link_to "No",user_path(@user),class: 'btn btn-success' %>
+    <%= link_to "Yes",withdraw_users_path,class: 'btn btn-danger',method: :patch,data: { confirm: 'Do you really want to unsubscribe?' } %>
+    </div>
+  </div> 
+</div>

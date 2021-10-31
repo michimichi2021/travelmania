@@ -1,0 +1,6 @@
+<%= form_with model: chat do |f| %>
+  <%= f.text_field :message %>
+  <%= f.hidden_field :room_id %>
+  <%= f.hidden_field :user_id %>
+  <div><%= f.submit "SEND", class:"btn btn-sm btn-success chat-btn mt-1" %></div>
+<% end %>

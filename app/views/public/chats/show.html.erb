@@ -1,0 +1,23 @@
+<div class ="container">
+  <div class ="row">
+    <div class ="col-12 mt-2 mb-2 text-center">
+      <div id="chat_form">
+        <%= render partial: 'public/chats/form', locals: { chat: @chat} %>
+      </div>
+    </div>
+  </div>
+  <div class ="row">
+    <div class ="col-12">
+    <h4 class ="col-12 text-center mt-3 mb-3">CHAT WITH<br><%= @user.name %></h4>
+    <table class="message tableb m-auto">
+      <% @chats.each do |chat| %>
+        <div id="chats_area">
+          <%= render partial: 'public/chats/chat', locals: { chat: chat } %>
+        </div>
+      <% end %>
+    </table>
+    <%= paginate @chats %>
+    </div>
+  </div>
+</div>
+

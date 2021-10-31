@@ -1,0 +1,7 @@
+<%= link_to post_path(post) do %>
+  <% if post.image.attached? %>
+    <%= image_tag post.image,class: 'post_image post_image_size' %> 
+  <% else %>
+    <%= image_tag no_image.jpeg,class: 'post_image post_image_size' %>
+  <% end %>
+<% end %>

@@ -1,0 +1,4 @@
+$("#comment_count<%= @post.id %>").html("<%= j(render partial: 'public/comments/count',locals: {post: @post}) %>");
+$("#comment_area").html("<%= j(render partial: 'public/comments/index', locals: {comments: @comments}) %>");
+$("#comment_form").html("<%= j(render partial: 'public/comments/form', locals: {comment: @comment,post: @post}) %>");
+$("textarea").val('');

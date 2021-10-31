@@ -1,0 +1,38 @@
+<div class ="container mb-3">
+  <div class ="row">
+    <h1 class ="col-12 text-center mt-5 mb-2">Edit Article</h1>
+    <% if @post.errors.any? %>
+    <div class ="col-12 text-center">
+      <%= @post.errors.count %> errors have occurred<br>
+      <% @post.errors.full_messages.each do |message| %>
+        <%= message %><br>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+  <div class ="row">
+    <div class ="col-12 text-center mt-2">
+    <%= form_with model:@post,method: :patch,local: true do |f| %>
+      <%= f.label:name, "location name" %><br>
+      <%= f.text_field:name,autofocus:true %><br>
+      <%= f.label:areas, "area" %><br>
+      <%= f.collection_select :area_id, Area.all, :id, :name,  include_blank: 'none' %><br>
+      <%= f.label:genres, "genre" %><br>
+      <%= f.collection_select :genre_id, Genre.all, :id, :name,  include_blank: 'none' %><br>
+      <%= f.label:scenes, "scene" %><br>
+      <%= f.collection_select :scene_id, Scene.all, :id, :name,  include_blank: 'none' %><br>
+      <%= f.label:image, "article image",class:"mt-2" %><br>
+      <%= f.file_field :image %><br>
+      <%= f.label:introduction, "introduction" %><br>
+      <%= f.text_area:introduction,rows:'5',placeholder: "explain here...",autofocus:true %><br>
+      <%= f.submit "Edit",class:"mt-2" %>
+    <% end %>  
+    <div class='mt-2'>
+    <% if current_user == @post.user%>
+      <%=link_to "Destroy",post_path(@post),method: :delete,data: { confirm: 'Do you really want to delete this?' },class: 'btn btn-danger mt-1' %>
+    <% end %>
+    </div>
+    </div>
+  </div>
+</div>
+

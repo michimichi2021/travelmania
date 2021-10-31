@@ -1,0 +1,112 @@
+<%= image_tag '0adpkkj.jpg',class: "main-visual" %>
+<div class="main_search">
+  <h2>Let's search location!</h2>
+  <div class="select_box">
+  <%= search_form_for @p, url: search_posts_path do |f| %>
+    <div class='nav-down'>
+      <div class='label-select'>
+        <%= f.label :area_id_eq, 'area', class: 'label' %><br>
+        <%= f.collection_select :area_id_eq, Area.where.not(id: 0), :id, :name,  include_blank: 'none', class: 'search-select' %>
+      </div>
+      <div class='label-select'>
+        <%= f.label :genre_id_eq, 'genre', class: 'label' %>
+        <%= f.collection_select :genre_id_eq, Genre.where.not(id: 0), :id, :name,  include_blank: 'none', class: 'search-select' %>
+      </div>
+      <div class='label-select'>
+        <%= f.label :scene_id_eq, 'scene', class: 'label' %><br>
+        <%= f.collection_select :scene_id_eq, Scene.where.not(id: 0), :id, :name,  include_blank: 'none', class: 'search-select' %>
+      </div>
+      <%= f.submit 'search',class:'mt-2' %>
+    </div>
+  <% end %>
+  </div>
+</div>
+<div class ='container mb-5'>
+  <div class ="row mt-5">
+  <h1 class="text-center col-12">New article</h1>
+  <div class ='d-flex flex-wrap justify-content-center'>
+  <% @posts.each do |post| %>
+   <%= render "public/posts/new_index", post: post %>
+  <% end %>
+  </div>
+  
+  
+  <h1 class ='text-center mt-5 col-12'>Tohoku Area</h1>
+  <% if @post_ranking_tohokus.present? %>
+  <div class ='d-flex flex-wrap justify-content-center'>
+    <% @post_ranking_tohokus.each.with_index(1) do |post,i| %>
+      <%= render "public/posts/area_index", post: post,i: i %>
+    <% end %>
+  </div>
+  <% else %>
+   <h4 class='col-12 text-center mt-2'>No articles have been liked.</h4>
+  <% end %>
+  
+  <h1 class ='text-center mt-5 col-12'>Kanto Area</h1>
+  <% if @post_ranking_kantos.present? %>
+  <div class ='d-flex flex-wrap justify-content-center'>
+    <% @post_ranking_kantos.each.with_index(1) do |post,i| %>
+      <%= render "public/posts/area_index", post: post,i: i %>
+    <% end %>
+  </div>
+  <% else %>
+   <h4 class='col-12 text-center mt-2'>No articles have been liked.</h4>
+  <% end %>
+  
+  <h1 class ='text-center mt-5 col-12'>Tyubu Area</h1>
+  <% if @post_ranking_tyubus.present? %>
+  <div class ='d-flex flex-wrap justify-content-center'>
+  <% @post_ranking_tyubus.each.with_index(1) do |post,i| %>
+    <%= render "public/posts/area_index", post: post,i: i %>
+  <% end %>
+  </div>
+  <% else %>
+   <h4 class='col-12 text-center mt-2'>No articles have been liked.</h4>
+  <% end %>
+  
+  <h1 class ='text-center mt-5 col-12'>Kinki Area</h1>
+  <% if @post_ranking_kinkis.present? %>
+  <div class ='d-flex flex-wrap justify-content-center'>
+  <% @post_ranking_kinkis.each.with_index(1) do |post,i| %>
+    <%= render "public/posts/area_index", post: post,i: i %>
+  <% end %>
+  </div>
+  <% else %>
+   <h4 class='col-12 text-center mt-2'>No articles have been liked.</h4>
+  <% end %>
+  
+  <h1 class ='text-center mt-5 col-12'>Tyugoku Area</h1>
+  <% if @post_ranking_tyugokus.present? %>
+  <div class ='d-flex flex-wrap justify-content-center'>
+    <% @post_ranking_tyugokus.each.with_index(1) do |post,i| %>
+      <%= render "public/posts/area_index", post: post,i: i %>
+    <% end %>
+  </div>
+  <% else %>
+   <h4 class='col-12 text-center mt-2'>No articles have been liked.</h4>
+  <% end %>
+  
+  <h1 class ='text-center mt-5 col-12'>Shikoku Area</h1>
+  <% if @post_ranking_shikokus.present? %>
+  <div class ='d-flex flex-wrap justify-content-center'>
+  <% @post_ranking_shikokus.each.with_index(1) do |post,i| %>
+    <%= render "public/posts/area_index", post: post,i: i %>
+  <% end %>
+  </div>
+  <% else %>
+   <h4 class='col-12 text-center mt-2'>No articles have been liked.</h4>
+  <% end %>
+  
+  <h1 class ='text-center mt-5 col-12'>Kyusyu Area</h1>
+  <% if @post_ranking_kyusyus.present? %>
+  <div class ='d-flex flex-wrap justify-content-center'>
+    <% @post_ranking_kyusyus.each.with_index(1) do |post,i| %>
+      <%= render "public/posts/area_index", post: post,i: i %>
+    <% end %>
+  </div>
+  <% else %>
+   <h4 class='col-12 text-center mt-2'>No articles have been liked.</h4>
+  <% end %>
+  </div>
+</div>
+ 

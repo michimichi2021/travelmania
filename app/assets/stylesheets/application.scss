@@ -1,0 +1,419 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "bootstrap";
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
+
+/*全体*/
+@charset "UTF-8";
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Corben', cursive;
+}
+
+li{
+  list-style: none;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+  text-decoration: none;
+}
+
+.introduction{
+ overflow-y:scroll;
+ overflow-wrap: break-word;
+ word-wrap: break-word;
+}
+
+.upload-label input {
+ display: none;
+}
+
+//記事の画像
+.post_image{
+ background-size: contain;
+ object-fit:cover;
+}
+
+.post_image_size{
+ width:200px;
+ height:200px;
+}
+
+
+// ヘッダー
+.header_nav{
+ display: flex;
+ width: 100%;
+ height: 70px;
+ background: #4169e1;
+ color:white;
+}
+
+
+.drawer{
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ padding: 0 1em;
+}
+
+.menu ul li a:hover{
+  color:orange;
+}
+
+.menu{
+width: 100%;
+}
+
+.menu ul{
+ height: 70px;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: flex-end;
+ align-items: center;
+}
+.menu ul li {
+ padding: 0 1em;
+}
+
+//いいねのハート
+.my-red{
+  color: #ce5242;
+}
+
+
+// フッター
+footer{
+  background: #4169e1;
+}
+
+
+// ユーザーマイページ
+.user_icon{
+ border-radius:100px;
+}
+
+.user_name{
+ font-weight: bold;
+}
+
+.user_btn{
+  color: white;   
+}
+
+.user_introduction{
+ width:220px;
+ height:100px;
+ border:1px solid #d3d3d3;
+}
+
+.user_post_wrap{
+ width:220px;
+ height:220px;
+ border: 1px solid #000000;
+ line-height:220px;
+}
+
+// トップページ
+.main-visual {
+  width: 100%; 
+  height: 500px; 
+  background-size: cover; 
+  object-fit:cover;
+  position:releative;
+}
+
+.main_search{
+ width:260px;
+ height:350px;
+ background-color:#f5f5f5;
+ position:absolute;
+ top:120px;
+ left:20px;
+}
+ 
+
+.post_wrap{
+  width:200px;
+  height:380px;
+  background-color:#EEEEEE;
+  margin:10px;
+  position:relative;
+}
+
+.tag{
+  display: inline-block;
+  margin: 0 .1em .1em 0;
+  padding: .2em;
+  line-height: 1;
+  text-decoration: none;
+  border-radius: 2em;   
+}
+
+.area_tag{
+ background-color:#FFCCFF;    
+ border: 1px solid #FF77FF;
+}
+
+.genre_tag{
+ background-color:#CBFFD3;    
+ border: 1px solid #5BFF7F;
+}
+
+.scene_tag{
+ background-color:#DCC2FF;    
+ border: 1px solid #9057FF;
+}
+
+.rank_tag{
+display: inline-block;
+margin: 0 .1em .1em 0;
+padding: .2em;
+line-height: 1;
+text-decoration: none;
+color: #0000ee;
+background-color: #fff;
+border: 1px solid #0000ee;
+position:absolute;
+top:0px;
+}
+
+// 投稿詳細
+.post_show_image{
+ width: 100%;
+}
+
+.post_show_name{
+ font-weight: bold;
+}
+
+.post_show_user_icon{
+ border-radius:10px;
+}
+
+.post_introduction{
+ width:300px;
+ height:100px;
+ border:1px solid #d3d3d3;
+}
+
+.comment_introduction{
+ width:220px;
+ height: 80px;
+}
+
+// チャットページ
+.talking {
+ margin-bottom:2em;
+ position:relative;
+}
+
+.talking:before , .talking:after {
+ clear:both;
+ content:"";
+ display:block;
+}
+
+/*アイコン*/
+.talking .user_icon {
+ width:60px;    
+ height:60px;    
+ margin: 0px 10px;
+ border:2px solid #aaa;
+ border-radius:50%; 
+}
+
+
+/*吹き出しのセリフ部分*/
+.talking-left , .talking-right  {
+ position:relative;
+ padding:10px;
+ border-style:solid;    
+ border-radius:10px;   
+ max-width: calc(100% - 80px);
+}
+
+.talking p {
+ margin:0;
+}
+
+.talking p :last-child {
+ margin:0;
+}
+
+/*---左の吹き出し---*/
+.talking-left {
+ float:left;
+ border-width:2px;        
+ border-color:lightpink;   
+ background:lightpink;    
+}
+
+/*左の吹き出し 三角*/
+.talking-left:before {
+ position: absolute;
+ content: '';
+ border: 10px solid transparent;
+ border-right: 10px solid lightpink;  
+ top: 15px;
+ left: -22px;
+}
+
+.talking-left:after {
+ position: absolute;
+ content: '';
+ border: 10px solid transparent;
+ border-right: 10px solid lightpink;
+ top: 15px;
+ left: -19px;
+}
+
+/*---右の吹き出し---*/
+.talking-right {
+ float:right;
+ border-width:2px;     
+ border-color:khaki;    
+ background:khaki;    
+}
+
+/*右の吹き出し 三角*/
+.talking-right:before {
+ position: absolute;
+ content: '';
+ border: 10px solid transparent;
+ border-left: 10px solid khaki;  
+ top: 15px;
+ right: -22px;
+}
+
+.talking-right:after {
+ position: absolute;
+ content: '';
+ border: 10px solid transparent;
+ border-left: 10px solid khaki;
+ top: 15px;
+ right: -19px;
+}
+
+.talking-left_icon figcaption ,
+.talking-right_icon figcaption {
+ padding:2px 0 0;
+ font-size:12px;
+ text-align:center;
+}
+
+.chat_wrap{
+ width:170px;
+ height: 80px;
+ overflow-y:scroll;
+ overflow-wrap: break-word;
+ word-wrap: break-word;
+}
+
+//フォローフォロワーページ
+.follow_table{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.follow_table tr{
+  border-bottom: solid 1px #eee;
+  cursor: pointer;
+}
+
+.follow_table tr:hover{
+  background-color: #d4f0fd;
+}
+
+.follow_table th,.follow_table td{
+  text-align: center;
+  width: 25%;
+  padding: 15px 0;
+}
+
+.follow_table td.icon{
+  background-size: 35px;
+  background-position: left 5px center;
+  background-repeat: no-repeat;
+}
+
+.user_profile a{
+  color:orange;
+}
+
+.chat_btn{
+ width:150px;
+}
+
+// 管理者画面
+
+.admin_table{
+border: 1px #C0C0C0 solid;
+}
+
+.admin_td{
+ border: 1px #C0C0C0 solid;
+}
+
+.admin_th{
+ border: 1px #C0C0C0 solid;
+}
+
+.admin_table{
+ border-collapse:collapse;
+ border-spacing:0;
+ align-items:center;
+}
+
+
+@media screen and (max-width: 640px) {
+ .admin_user_table {
+ width: 80%;
+ } 
+ .admin_user_table .thead {
+ display: none;
+ }
+.admin_user_table tr,
+.admin_user_table td{
+  display: block;
+  width: 100%;
+  position: relative;
+  }
+.admin_user_table td:first-child:before {
+  content: " ";
+  background: #e9727e;
+  box-sizing: border-box;
+  color: #fff;
+  font-weight: bold;
+  height: 40px;
+  padding: 10px;
+  position: absolute;
+  top: -41px;
+  left: -0.2%;
+  display: block;
+  width: 100.5%;
+  }
+ 
+}

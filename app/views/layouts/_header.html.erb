@@ -1,0 +1,70 @@
+<header>
+  
+  <nav class ="header_nav" >
+    <div class="drawer">
+      <h4><%= link_to "TravelMania",root_path,class: 'site_logo' %></h4>
+    </div>
+  <div class="menu">
+  <ul> 
+  <% if user_signed_in? %>
+    <li>
+      <%= link_to new_post_path do %>
+        <i class="fas fa-camera-retro fa-2x"></i>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to favorites_user_path(id: current_user) do %>
+        <i class="far fa-heart fa-2x"></i>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to user_path(id: current_user) do %>
+      <i class="far fa-user fa-2x"></i>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to chats_path do %>
+      <i class="far fa-envelope fa-2x"></i>
+      <% end %>
+    </li>
+    <% if current_user.passive_notifications.where(checked: false).any? %>
+      <i class="fa fa-circle" style="color: gold;"></i>
+    <% end %>
+    <li>
+      <%= link_to notifications_path do %>
+      <i class="far fa-bell fa-2x"></i>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to "logout", destroy_user_session_path, method: :delete %>
+    </li>
+  <% elsif admin_signed_in? %>
+    <li>
+      <%= link_to "logout", destroy_admin_session_path, method: :delete %>
+    </li>
+    <li>
+      <%= link_to "area", admin_areas_path %>
+    </li>
+    <li>
+      <%= link_to "genre", admin_genres_path %>
+    </li>
+    <li>
+      <%= link_to "scene", admin_scenes_path %>
+    </li>
+    <li>
+      <%= link_to "user", admin_users_path %>
+    </li>
+  <% else %>
+    <li>
+      <%= link_to "signup",  new_user_registration_path %>
+    </li>
+    <li>
+      <%= link_to "login", new_user_session_path %>
+    </li>
+  <% end %>
+  
+  </ul>
+  </div>
+  </nav>
+  
+</header>

@@ -1,0 +1,47 @@
+<div class ="container mb-5">
+  <div class ="row">
+    <div class ="col-12 text-center">
+      <%= render "public/users/user_image", user: @user %>
+      <div class ="text-center"><%= @user.name %></div>
+      <div class ="user_btn mb-2">
+        <% if @user == current_user %>
+          <%= link_to "Edit Article",edit_post_path(@post),class:"btn btn-sm btn-success" %>
+        <% else admin_signed_in? %>
+          <%= link_to "Destroy",post_path(@post),method: :delete,data: { confirm: 'Do you really want to delete this?' },class: 'btn btn-danger mt-1' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class ="row">
+    <span class ='area_tag tag'><%= @post.area.name %></span>
+    <span class ='genre_tag tag'><%= @post.genre.name %></span>
+    <span class ='scene_tag tag'><%= @post.scene.name %></span>
+    <div class ="col-12 text-center post_show_image_wrap"> 
+    <%= link_to post_path(@post) do %>
+      <% if @post.image.attached? %>
+        <%= image_tag @post.image,class: 'post_image post_show_image' %> 
+      <% else %>
+        <%= image_tag no_image.jpeg,class: 'post_image post_show_image' %>
+      <% end %>
+    <% end %>
+    </div>
+  </div>
+  <div class ="row">
+    <div class ="d-flex">
+    <div id="post_<%= @post.id %>"><%= render "public/favorites/favorite", post: @post %></div>
+    <div id="comment_count<%= @post.id %>"><%= render partial: 'public/comments/count', locals: { post: @post } %></div>
+    </div>
+  </div>
+  <div class ="row">
+    <div><span class ="post_show_name"><%= @post.name %></span><br><div class ="introduction post_introduction"><%= @post.introduction %></div></div>
+  </div>
+  <div class ="row mt-2">
+    <div id="comment_form">
+      <%= render partial: 'public/comments/form', locals: { comment: @comment, post: @post } %>
+    </div>
+  </div>
+  <div class ="row mt-2">
+    <div id="comment_area"><%= render partial: 'public/comments/index', locals: { comments: @comments } %></div>
+  </div>
+</div>
+

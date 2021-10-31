@@ -1,0 +1,29 @@
+<div class ="container mb-5">
+  <div class ="row">
+    <h1 class ="col-12 text-center mt-5 mb-5">User List</h1>
+    <div class ="col-12 text-center mt-2">
+    <table class ="admin_table admin_user_table col-12 m-auto">
+      <tr class ="thead">
+        <th class ="admin_th">name</th>
+        <th class ="admin_th">email</th>
+        <th class ="admin_th">status</th>
+      </tr>
+      <% @users.each do |user| %>
+      <tr>
+        <td class ="admin_td"><%= user.name %></td>
+        <td class ="admin_td"><%= user.email %></td>
+        <td class ="admin_td">
+        <% if user.is_deleted == false %>
+          Valid
+        <% else %>
+          Withdrawal
+        <% end %>
+        </td>
+        <td class ="admin_td", style="color:white;"><%= link_to "Edit",edit_admin_user_path(user),class:"btn btn-sm btn-success" %></td>
+      </tr>
+      <% end %>
+    </table>  
+    <%= paginate @users %>
+    </div>
+  </div>
+</div>

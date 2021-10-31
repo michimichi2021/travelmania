@@ -1,0 +1,58 @@
+<div class="container mb-5">
+  <div class="row">
+    <div class ="col-12 text-center">
+      <%= render "public/users/user_image", user: @user %>
+      <div class ="text-center"><%= @user.name %></div>
+      <div class ="text-center">
+        <div class ="user_profile">
+          <p>article:<%= @user.posts.count %>&nbsp;&nbsp;
+          follower:<%= link_to @user.follower_user.count,followers_user_path(@user) %>&nbsp;&nbsp;
+          follow:<%= link_to @user.following_user.count,follows_user_path(@user) %></p>
+        </div>
+        <div class ="user_btn mb-2">
+          <% if @user == current_user %> 
+          <%= link_to "Edit Profile",edit_user_path(@user),class:"btn btn-sm btn-success" %>
+          <% end %>
+        </div>
+        <div class ='introduction user_introduction m-auto'>
+          <%= @user.introduction %>
+        </div>
+      　<div class = "user_btn">
+      　<% if admin_signed_in? %>
+      　<% else %>
+          <% if current_user != @user %>
+            <% if current_user.following?(@user) %>
+              <%= link_to 'Unfollow', user_relationships_path(@user.id), method: :delete, class: "btn btn-danger mb-2" %>
+            　<% if @user.following?(current_user) %>
+              <%= link_to 'Chat', chat_path(@user.id),class:"btn btn-success mb-2" %>
+              <% end %>
+            <% else %>
+              <%= link_to 'Follow', user_relationships_path(@user.id), method: :post , class: "btn btn-primary"%>
+            <% end %>
+          <% end %>
+        <% end %>
+        </div>
+        <div class = "mt-5">
+          <h1>User Articles</h1>
+          <div class ="d-flex flex-wrap justify-content-center">
+          <% @posts.each do |post| %>
+            <div class = "user_post_wrap">
+              <%= render "public/posts/post_image", post: post %>
+            </div>
+          <% end %>
+          </div>
+          <div class ="col-12 m-auto"><%= paginate @posts %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+ 
+
+ 
+
