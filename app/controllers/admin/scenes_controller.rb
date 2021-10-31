@@ -11,7 +11,7 @@ def create
   if @scene.save
     redirect_to admin_scenes_path
   else
-    @scenes = Scene.all
+    @scenes = Scene.page(params[:page]).per(10)
     render 'index'
   end
 end

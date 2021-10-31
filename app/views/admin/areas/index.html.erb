@@ -6,6 +6,7 @@
       <%= f.text_field :name, autofocus: true %>
       <%= f.submit "send" %>
     <% end %>
+    <%= paginate @areas %>
     <table class ="admin_table col-12 text-center mt-5">
       <thead>
         <th class ="admin_th">area name</th>
@@ -22,7 +23,7 @@
        <% end %>
       </tbody>
     </table>  
-    <%= paginate @areas %>
+    
     </div>
   </div>
 </div>

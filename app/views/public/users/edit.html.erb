@@ -1,9 +1,17 @@
 <div class ="container">
   <div class ="row">
     <h1 class ="col-12 text-center mt-5 mb-2">Edit Profile</h1>
+    <% if @user.errors.any? %>
+    <div class ="col-12 text-center">
+      <%= @user.errors.count %> errors have occurred<br>
+      <% @user.errors.full_messages.each do |message| %>
+        <%= message %><br>
+      <% end %>
+    </div>
+    <% end %>
   </div>
   <div class ="row">
-    <div class ="col-12 text-center">
+    <div class ="col-12 text-center mt-2">
     <%= form_with model:@user,url: user_path,method: :patch,local: :true do |f| %>
       <%= f.label:name, "user name" %><br>
       <%= f.text_field :name, autofocus: true %><br>

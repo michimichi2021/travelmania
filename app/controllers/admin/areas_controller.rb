@@ -11,7 +11,7 @@ def create
   if @area.save
     redirect_to admin_areas_path
   else
-    @areas = Area.all
+    @areas = Area.page(params[:page]).per(10)
     render 'index'
   end
 end
