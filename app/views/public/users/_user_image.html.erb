@@ -2,7 +2,7 @@
 <% if user.image.attached? %>
   <%= image_tag user.image.variant(resize:'200x200'),class:'user_icon mt-5' %>
 <% else %>
-  <%= image_tag no_image.jpeg.variant(resize:'200x200'),class:'user_icon mt-5' %>
+  <h1 class ="mt-2">no icon</h1>
 <% end %>
 <% end %>
 
