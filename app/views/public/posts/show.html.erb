@@ -6,8 +6,9 @@
       <div class ="user_btn mb-2">
         <% if @user == current_user %>
           <%= link_to "Edit Article",edit_post_path(@post),class:"btn btn-sm btn-success" %>
-        <% else admin_signed_in? %>
+        <% elsif admin_signed_in? %>
           <%= link_to "Destroy",post_path(@post),method: :delete,data: { confirm: 'Do you really want to delete this?' },class: 'btn btn-danger mt-1' %>
+        <% else %>
         <% end %>
       </div>
     </div>
