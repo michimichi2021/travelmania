@@ -14,8 +14,8 @@
     </div>
   </div>
   <div class ="row text-center">
-    <div class ='col-2'></div>
-    <div class ='col-8 text-center'>
+    <div class ='col-lg-2'></div>
+    <div class ='col-lg-8 text-center'>
       <span class ='area_tag tag'><%= @post.area.name %></span>
       <span class ='genre_tag tag'><%= @post.genre.name %></span>
       <span class ='scene_tag tag'><%= @post.scene.name %></span>
@@ -26,22 +26,20 @@
           <%= image_tag no_image.jpeg,class: 'post_image post_show_image' %>
         <% end %>
       <% end %>
-    </div>
-    <div class ='col-2'></div>
-  </div>
-  <div class ="row">
-    <div class ="col-12 text-center">
       <div class ="post_show_name"><%= @post.name %></div>
       <div class ="introduction post_introduction m-auto"><%= @post.introduction %></div>
       <div class ="mt-2">
         <div id="comment_form">
           <%= render partial: 'public/comments/form', locals: { comment: @comment, post: @post } %>
         </div>
-        <div class ="mt-2">
+        <div class ="mt-5">
           <div id="comment_area"><%= render partial: 'public/comments/index', locals: { comments: @comments } %></div>
+          <%= paginate @comments %>
         </div>
       </div>
     </div>
+    <div class ='col-lg-2'></div>
   </div>
+  
 </div>
 
