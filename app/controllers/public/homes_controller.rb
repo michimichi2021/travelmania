@@ -9,7 +9,7 @@ def top
   @post_ranking_kinkis = Post.post_favorite.where(area_id: 4).order_rank
   @post_ranking_tyugokus = Post.post_favorite.where(area_id: 5).order_rank
   @post_ranking_shikokus = Post.post_favorite.where(area_id: 6).order_rank
-  @post_ranking_kyusyus = Post.post_favorite.where(area_id: 9).order_rank
+  @post_ranking_kyusyus = Post.post_favorite.where(area_id: 7).order_rank
 end
 
 private

@@ -1,5 +1,5 @@
 <%= form_with(model:[post, comment],url: post_comments_path(post),method: :post,remote: true)do |f| %>
-  <%= f.text_area :comment, rows:'5',placeholder: "comment here..." %>
+  <%= f.text_area :comment, rows:'5'%>
   <div><%= f.submit "send" %></div>
 <% end %>
 

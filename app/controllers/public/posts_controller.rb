@@ -20,7 +20,7 @@ def show
   @post = Post.find(params[:id])
   @user = @post.user
   @comment = Comment.new
-  @comments = @post.comments
+  @comments = @post.comments.order('id DESC').page(params[:page]).per(3)
   @favorite = Favorite.new
 end
 
