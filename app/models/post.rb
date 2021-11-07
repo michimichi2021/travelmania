@@ -22,6 +22,9 @@ class Post < ApplicationRecord
       visited_id: user_id,
       action: "like"
     )
+    if notification.visiter_id == notification.visited_id
+      notification.checked = true
+    end
     notification.save if notification.valid?
   end
 
