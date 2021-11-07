@@ -26,9 +26,9 @@
           <%= image_tag no_image.jpeg,class: 'post_image post_show_image' %>
         <% end %>
       <% end %>
-        <div class ="d-flex">
-        <div id="post_<%= @post.id %>"><%= render "public/favorites/favorite", post: @post %></div>
-        <div id="comment_count<%= @post.id %>"><%= render partial: 'public/comments/count', locals: { post: @post } %></div>
+      <div class ="d-flex">
+      <div id="post_<%= @post.id %>"><%= render "public/favorites/favorite", post: @post %></div>
+      <div id="comment_count<%= @post.id %>"><%= render partial: 'public/comments/count', locals: { post: @post } %></div>
       </div>
       <div class ="post_show_name"><%= @post.name %></div>
       <div class ="introduction post_introduction m-auto"><%= @post.introduction %></div>
