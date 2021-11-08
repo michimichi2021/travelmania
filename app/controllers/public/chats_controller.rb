@@ -6,6 +6,8 @@ class Public::ChatsController < ApplicationController
     @user = User.find(params[:id])
     rooms = current_user.user_rooms.pluck(:room_id)
     user_rooms = UserRoom.find_by(user_id: @user.id, room_id: rooms)
+    
+   
 
     unless user_rooms.nil?
       @room = user_rooms.room
@@ -25,8 +27,30 @@ class Public::ChatsController < ApplicationController
   end
   
   def create
+    rooms = current_user.user_rooms.pluck(:room_id)
+    user_rooms = UserRoom.find_by(room_id: rooms)
+    @room = user_rooms.room
+   
     @chat = current_user.chats.new(chat_params)
     @chat.save!
+    
+    
+    notification = current_user.active_notifications.new(
+    chat_id: @chat.id,
+    room_id: @room.id,
+    visited_id: user_rooms.user_id,
+    visiter_id: current_user.id,
+    action: 'chat'
+    )
+    
+    
+    if notification.visiter_id == notification.visited_id
+      notification.checked = true
+    end
+    notification.save if notification.valid?
+
+     
+      
     redirect_to request.referer
   end
   

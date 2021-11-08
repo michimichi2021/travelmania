@@ -2,6 +2,8 @@ module NotificationsHelper
   def notification_form(notification)
     visited = notification.visited
     case notification.action
+    when "chat" then
+    tag.a("The user has sent you a") + tag.a(' message',href: chat_path(notification.room_id), style: "color:orange;")
     when "follow" then
       "The user has followed you."
     when "like" then
