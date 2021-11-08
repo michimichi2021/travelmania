@@ -24,14 +24,8 @@
       <i class="far fa-user fa-2x"></i>
       <% end %>
     </li>
-    <li>
-      <%= link_to chats_path do %>
-      <i class="far fa-envelope fa-2x"></i>
-      <% end %>
-    </li>
-    
+   
     <% if current_user.passive_notifications.where(checked: false).any? %>
-    
       <i class="fa fa-circle" style="color: gold;"></i>
     <% end %>
     <li>

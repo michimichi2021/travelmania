@@ -1,7 +1,10 @@
 module NotificationsHelper
   def notification_form(notification)
     visited = notification.visited
+    visiter = notification.visiter
     case notification.action
+    when "chat" then
+     "The user has sent you a message"
     when "follow" then
       "The user has followed you."
     when "like" then

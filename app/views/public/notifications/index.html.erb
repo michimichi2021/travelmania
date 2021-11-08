@@ -28,7 +28,7 @@
                 <% if visiter.image.attached? %>
                   <%= image_tag visiter.image.variant(resize:'80x80'),class:'user_icon' %>
                 <% else %>
-                  <%= image_tag no_image.jpeg.variant(resize:'80x80'),class:'user_icon' %>
+                  <h1 class ="mt-2">no icon</h1>
                 <% end %>
               <% end %>
               <br><%= notification.visiter.name %>
