@@ -22,23 +22,20 @@ class Public::ChatsController < ApplicationController
    
   end
   
-  def index
-    @user_rooms = UserRoom.page(params[:page]).page(params[:page]).per(10)
-  end
-  
+
   def create
-    rooms = current_user.user_rooms.pluck(:room_id)
-    user_rooms = UserRoom.find_by(room_id: rooms)
-    @room = user_rooms.room
-   
     @chat = current_user.chats.new(chat_params)
-    @chat.save!
+    @room = @chat.room
+    if @chat.save
     
+    @roommembernotme=UserRoom.where(room_id: @room.id).where.not(user_id: current_user.id)
+    @theid=@roommembernotme.find_by(room_id: @room.id)
+   
     
     notification = current_user.active_notifications.new(
     chat_id: @chat.id,
     room_id: @room.id,
-    visited_id: user_rooms.user_id,
+    visited_id: @theid.user_id,
     visiter_id: current_user.id,
     action: 'chat'
     )
@@ -52,6 +49,8 @@ class Public::ChatsController < ApplicationController
      
       
     redirect_to request.referer
+    
+    end
   end
   
   def destroy
@@ -67,9 +66,9 @@ class Public::ChatsController < ApplicationController
   end
   
   def follow_each_other
-    user = User.find(params[:id])
-    unless current_user.following?(user) && user.following?(current_user)
-      redirect_to user_path(user)
+    @user = User.find(params[:id])
+    unless current_user.following?(@user) && @user.following?(current_user)
+      redirect_to user_path(current_user)
     end
   end
    
