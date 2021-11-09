@@ -8,7 +8,7 @@
             <% if chat.user.image.attached? %>
               <%= image_tag chat.user.image,class:'user_icon' %>
             <% else %>
-              <%= image_tag no_image.jpeg,class:'user_icon' %>
+              <h3 class ="mt-2 user_icon"></h1>
             <% end %>
           <% end %>
           <figcaption><%= current_user.name %></figcaption>
@@ -38,7 +38,7 @@
             <% if chat.user.image.attached? %>
               <%= image_tag chat.user.image,class:'user_icon' %>
             <% else %>
-              <%= image_tag no_image.jpeg,class:'user_icon' %>
+              <h1 class ="mt-2 user_icon"></h1>
             <% end %>
           <% end %>
           <figcaption><%= chat.user.name %></figcaption>

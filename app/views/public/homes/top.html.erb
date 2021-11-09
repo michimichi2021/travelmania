@@ -21,9 +21,9 @@
   <% end %>
   </div>
 </div>
-<div class ='container mb-5'>
-  <div class ="row mt-5">
-  <h1 class="text-center col-12">New article</h1>
+<div class ='container mb-5 mt-2'>
+  
+  <h1 class="text-center col-12 mt-5">New article</h1>
   <div class ='d-flex flex-wrap justify-content-center'>
   <% @posts.each do |post| %>
    <%= render "public/posts/new_index", post: post %>
@@ -107,6 +107,6 @@
   <% else %>
    <h4 class='col-12 text-center mt-2'>No articles have been liked.</h4>
   <% end %>
-  </div>
+  
 </div>
  
